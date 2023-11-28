@@ -1,0 +1,6 @@
+
+# Ignore anything in graphs directory
+/graphs/*
+
+# Ignore RTL directory
+/RTL/*
