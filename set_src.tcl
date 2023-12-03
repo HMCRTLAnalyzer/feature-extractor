@@ -56,10 +56,4 @@ set src_files $src_dir/$file_ext
 yosys read_verilog $src_files
 
 # process imported verilog files
-yosys hierarchy -top $MODULE_NAME
-yosys proc
-yosys flatten
-yosys techmap
-
-# Check hierarchy using yosys after setting top
-yosys hierarchy -check
+yosys hierarchy -check -top $MODULE_NAME
