@@ -11,9 +11,14 @@ yosys proc
 yosys flatten
 yosys memory
 yosys techmap
-yosys abc -fast
 yosys memory
 yosys clean
 
-# output graphviz files to specified graph_dir
-yosys show -format dot -prefix $GRAPH_DIR/$GRAPH_NAME
+# Synthesize and generate AIG
+yosys abc -fast
+yosys async2sync
+yosys dffunmap
+yosys aigmap
+yosys stat
+yosys write_aiger -zinit $GRAPH_DIR/$GRAPH_NAME
+

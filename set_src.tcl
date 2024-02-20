@@ -53,7 +53,7 @@ if {$::env(HDL_LANG) == "verilog"} {
 set src_files $src_dir/$file_ext
 
 # Read files into yosys
-yosys read_verilog $src_files
+yosys read_verilog -sv $src_files
 
 # process imported verilog files
 yosys hierarchy -check -top $MODULE_NAME

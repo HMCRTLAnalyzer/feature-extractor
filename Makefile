@@ -4,7 +4,7 @@ export SKY130_PATH := /opt/riscv/cad/lib/sky130_osu_sc_t12/12T_hs/lib
 export HDL_LANG ?= verilog
 export GRAPH_NAME ?= test
 
-time := $(shell date +%F-%H-%M)
+time := $(shell date +%F-%H-%M-%S)
 
 # IMPORTANT: MODULE_NAME must be the name of the TOP module in the design! 
 ifndef MODULE_NAME
@@ -24,9 +24,17 @@ GRAPH_DIR = ./graphs/$(NAME)/$(GRAPH_NAME)_$(time)
 endif
 export GRAPH_DIR
 
+build:
+	echo Building aiger library
+	cd aiger && ./configure.sh && make
+
 graph: 
 	mkdir $(GRAPH_DIR) && \
-	yosys -c graph_gen.tcl | tee $(GRAPH_DIR)/graph_gen.log
+	yosys -c graph_gen.tcl | tee $(GRAPH_DIR) graph_gen.log
+
+aig:
+	mkdir $(GRAPH_DIR) && \
+	yosys -c aig_gen.tcl | tee $(GRAPH_DIR)/aig_gen.log
 
 clean_work:
 	@if [ -d WORK ]; then \
@@ -36,3 +44,7 @@ clean_work:
 
 clean_graph:
 	rm -rf graphs/*
+
+clear_aiger:
+	echo Removing aiger library
+	cd aiger & make clean
