@@ -2,7 +2,6 @@
 export SKY130_PATH := /opt/riscv/cad/lib/sky130_osu_sc_t12/12T_hs/lib
 # HDL_LANG option is either verilog or sverilog. default to verilog unless set otherwise
 export HDL_LANG ?= verilog
-export GRAPH_NAME ?= test
 
 time := $(shell date +%F-%H-%M-%S)
 
@@ -18,9 +17,9 @@ endif
 export SRC_PATH
 
 ifndef NAME
-GRAPH_DIR = ./graphs/$(GRAPH_NAME)_$(time)
+GRAPH_DIR = ./graphs/$(NAME)
 else
-GRAPH_DIR = ./graphs/$(NAME)/$(GRAPH_NAME)_$(time)
+GRAPH_DIR = ./graphs/$(NAME)
 endif
 export GRAPH_DIR
 
@@ -35,6 +34,16 @@ graph:
 aig:
 	mkdir $(GRAPH_DIR) && \
 	yosys -c aig_gen.tcl | tee $(GRAPH_DIR)/aig_gen.log
+
+# generate dot from aiger using aigtodot utility
+	./aigtodot $(GRAPH_DIR)/$(MODULE_NAME).aig $(GRAPH_DIR)/$(MODULE_NAME).dot
+
+aig_auto:
+	yosys -c aig_gen.tcl | tee $(GRAPH_DIR)/aig_gen.log
+
+# generate dot from aiger using aigtodot utility
+	./aigtodot $(GRAPH_DIR)/$(MODULE_NAME).aig $(GRAPH_DIR)/$(MODULE_NAME).dot
+
 
 clean_work:
 	@if [ -d WORK ]; then \

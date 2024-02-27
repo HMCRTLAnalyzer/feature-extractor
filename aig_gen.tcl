@@ -4,7 +4,7 @@ source ./library.tcl
 source ./set_src.tcl
 
 set GRAPH_DIR $::env(GRAPH_DIR)
-set GRAPH_NAME $::env(GRAPH_NAME)
+set MODULE_NAME $::env(MODULE_NAME)
 
 # Process verilog files
 yosys proc
@@ -20,5 +20,5 @@ yosys async2sync
 yosys dffunmap
 yosys aigmap
 yosys stat
-yosys write_aiger -zinit $GRAPH_DIR/$GRAPH_NAME
+yosys write_aiger -zinit $GRAPH_DIR/$MODULE_NAME.aig
 

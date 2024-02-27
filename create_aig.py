@@ -2,7 +2,8 @@
 #   -----------------------------------------   #
 #   Script to generate dot files from general-synth results   
 #   Written by Kaitlin Lucio 11/27/23
-#
+#   
+#   CURRENTLY BROKEN DUE TO CHANGES MADE FOR PYTHON TO FUNCTION
 #   -----------------------------------------   #
 
 # Import libraries
@@ -43,7 +44,7 @@ def main():
         os.mkdir(results_path)
 
     # Call makefile for original project's verilog
-    os.system(f"make aig NAME={top} HDL_LANG={lang} MODULE_NAME={top} GRAPH_NAME={top}_AIG SRC_PATH={orig_src}")
+    os.system(f"make aig NAME={top} HDL_LANG={lang} MODULE_NAME={top} GRAPH_NAME={top} SRC_PATH={orig_src}")
 
     # If synth_verilog is defined, call makefile on that as well and put results in same directory as above
     if synth_src != "":

@@ -1,0 +1,4 @@
+design,module,percent_diff_delay,percent_diff_area,path_to_rtl,language
+ariane,lsu_bypass,1116.1614317019723,-0.12907667154290411,/home/qualcomm_clinic/RTL/OpenABC/leaf_level_verilog/tsmc65lp/ariane,verilog
+ethmac,eth_crc,-11.050264032857415,-24.180064308681676,/home/qualcomm_clinic/RTL/OpenABC/leaf_level_verilog/asap7/ethmac,verilog
+black_parrot,bsg_mux_segmented_segments_p8_segment_width_p8,29.142742016722067,-51.067961165048544,/home/qualcomm_clinic/RTL/OpenABC/leaf_level_verilog/nangate45/black_parrot,verilog
