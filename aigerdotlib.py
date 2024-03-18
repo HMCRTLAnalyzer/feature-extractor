@@ -48,9 +48,67 @@ def getDiGraphAdj(graph, node):
     return connected_nodes
 
 
-def NotEdgetoNotNode(graph):
+def logicalEffortEdgeMap(graph):
     """
-        Takes in a networkX graph with dot heads as edges and inserts a node N_i between the successor and predecessor
+        Takes in a directed acyclic graph and puts a numerical representation of the calculated logical effort on the 
+        edges flowing toward the output.
+
+        For more information on logical effort see: https://en.wikipedia.org/wiki/Logical_effort
+
+        Input: graph
+        Output: modified graph
+    """
+    for n in graph.nodes():
+        add_edge_list = []
+        if n[0] not in ["N", "I"]:
+            parasitic_delay = 2
+        else:
+            parasitic_delay = 1
+        effective_fanout = 0
+        for p in graph.predecessors(n):
+            if p[0] not in ["L","N"]:
+                effective_fanout += (4/3)
+            else:
+                effective_fanout += 1
+            add_edge_list = [(p, n)]
+        node_delay = parasitic_delay + effective_fanout
+        graph.add_edges_from(add_edge_list,weight=node_delay)
+
+    return graph
+
+
+def replaceBufWithLatch(graph):
+    """
+        Removes buffers inserted between latches and gates
+
+        Input: graph
+        Output: graph with buffers removed
+    """
+    original_graph = graph.copy()
+    for n in original_graph.nodes():
+        input = [s for s in original_graph.successors(n) if s[0] == "I" and s[1] != "L"]
+        if input:
+            s = input[0]
+            rm_edge_list = [(p, n) for p in original_graph.predecessors(n)]
+            add_edge_list = [(p, s) for p in original_graph.predecessors(n)]
+            graph.remove_edges_from(rm_edge_list)
+            graph.add_edges_from(add_edge_list)
+            graph.remove_node(n)
+
+    return graph
+
+
+def removeEdgesBetweenLatchNodes(graph):
+    """
+        Removes edges between latch nodes if the
+    """
+
+
+def replaceEdgesWithNotNodes(graph):
+    """
+        Takes in a networkX graph of an AIGER file and inserts a node N_i between the successor and predecessor if there should be a NOT there.
+            Case 1: NAND into not to get an AND gate (NAND is easier to analyze using logical effort)
+            Case 2: NOT from a latch
 
         Only used on networkX graphs generated from the AIGER format.
 
@@ -59,13 +117,20 @@ def NotEdgetoNotNode(graph):
     """
     original_graph = graph.copy()
     not_idx = 0
-    rm_edge_list = []
     for n in original_graph.nodes():
+        rm_edge_list = []
         p_not_list = []
         for p in original_graph.predecessors(n):
-            if original_graph[p][n]["arrowhead"] == "dot":
-                rm_edge_list += [(p,n)]
-                p_not_list += [p]
+            # Case 2: NOT from latch output
+            if "IL" in p:
+                if original_graph[p][n]["arrowhead"] == "dot":
+                    rm_edge_list += [(p,n)]
+                    p_not_list += [p]
+            # Case 1: All other cases
+            else: 
+                if original_graph[p][n]["arrowhead"] == "none":
+                    rm_edge_list += [(p,n)]
+                    p_not_list += [p]
         if rm_edge_list:
             N_name = f"N{not_idx}"
             graph.remove_edges_from(rm_edge_list)
@@ -78,18 +143,26 @@ def NotEdgetoNotNode(graph):
 
 
 def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
+    """
+        Takes a path to an AIGER file as well as the input and output basenames (ex: I, O, L for AIGER) 
+        and cuts it into a dictionary of graphs defined as follows
+            graph_dict[i] = {"graph", "inputs", "outputs"}
+    """
 
     original_graph = nx.DiGraph(nx.nx_pydot.read_dot(filepath))
     nodes = list(original_graph.nodes)
 
-    graph_list = []
+    graph_dict = {}
     input_names = []
     output_names = []
+    i = 0
 
     # Replace top-level nodes which are latches with the name "latch". They are guaranteed to not have successors in this format
 
     # Get mapping of old nodes to new nodes
     mapping = {}
+
+    latch_edge_rm = []
 
     for node in nodes:
         predecessors = getDiGraphPredecessors(original_graph, node)
@@ -97,19 +170,25 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
         # Get latch name from predecessors
         latch_list = [x for x in predecessors if "L" in x and not successors]
         if latch_list:
-            latchName = f"I{latch_list.pop(0)}"
+            current_latch = latch_list.pop(0)
+            latchName = f"I{current_latch}"
+            latch_edge_rm += [(latchName, current_latch)]
             mapping[node] = latchName
 
-    # Write changes found above
+    # Write changes found above and get new mapping
     original_graph = nx.relabel_nodes(original_graph, mapping, copy=False)
+    nodes = list(original_graph.nodes)
 
     OL_found = []
 
     for node in nodes:
-        if any(x in node for x in IO_basenames) and (node[0] == "I"):
-            input_names += node
 
+        # Reset output_names and input_names before scanning graph
+        output_names = []
+        input_names = []
+        
         if any(x in node for x in output_basenames) and (node not in OL_found): # See if the node name contains any strings from the list for output/latch names
+            output_names += [node]
             seen_nodes = [node]
             successors = original_graph.successors(node) # get nodes which feed into this latch/output
 
@@ -127,9 +206,9 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
                 # Add nodes not seen before into list of future search nodes
                 new_nodes = [x for x in adj if (x not in seen_nodes) and (x not in search_list) and not any(y in x for y in IO_basenames)]
                 other_nodes = [x for x in adj if any(y in x for y in IO_basenames)]
-
+        
                 # When we find a terminating node, add it to the list of found terminating nodes and ignore them for the future
-                OL_found += [x for x in other_nodes if any(y in x for y in output_basenames) and x[0] != "I"]
+                output_names += [x for x in other_nodes if any(y in x for y in output_basenames) and x[0] != "I"]
                 seen_nodes = list(set(seen_nodes + other_nodes))
 
                 # Get nodes who match IO_basenames
@@ -140,11 +219,20 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
             # Create graph using connected nodes
             sub_graph = original_graph.subgraph(seen_nodes).copy()
 
-            # Store found graph in graph_list under name of starter node, and store current node in output_names
-            output_names += [node]
-            graph_list += {sub_graph}
+            # From seen nodes, grab input nodes
+            for node in seen_nodes:
+                if any(x in node for x in IO_basenames) and (node[0] == "I"):
+                    input_names += [node]
+
+            # Store found graph in graph_list under name of starter node, and store found outputs in output_names
+            graph_dict[str(i)] = {"graph": sub_graph, "inputs": list(set(input_names)), "outputs": list(set(output_names))}
+            OL_found += output_names + input_names
+
+            # Increase iterator by 1
+
+            i += 1
     
-    return graph_list, output_names, input_names
+    return graph_dict
 
 
 def generateDOT(srcdir, module, language):
@@ -169,4 +257,154 @@ def generateDOT(srcdir, module, language):
     dot_filepath = f"{results_path}/{module}.dot"
 
     return dot_filepath
+
+
+def getLogicalDepthAllPaths(graph, input_names, output_names):
+    """
+        Takes an list of inputs (leaves), list of outputs (ends) and returns the max length between each input and output
+
+        Assumes the graph is structured such that outputs flow to inputs
+    """
+    logical_depth_lengths = []
+    for source in output_names:
+        try:
+            nodes = []
+            paths = nx.all_simple_paths(graph, source, input_names)
+            for path in paths:
+                nodes += [n for n in path if n not in nodes]
+            logical_depth_lengths += [len(dag_longest_path(graph.subgraph(nodes)))]
+        except Exception as e:
+            pass
+
+    return logical_depth_lengths
+
+
+def topNLargestLD(graph_dict, N):
+    """
+        Takes in a graph dictionary of entries containing a graph, list of inputs, a list of outputs and returns the top N paths
+
+        If N = 0, return entire list
+
+        If N < 0, function breaks.
+    """
+    list_of_LDs = []
+    for keys, entry in graph_dict.items():
+        graph = entry["graph"]
+        input_names = entry["inputs"]
+        output_names = entry["outputs"]
+        list_of_LDs += getLogicalDepthAllPaths(graph, input_names, output_names)
+    list_of_LDs.sort(reverse=True)
+    if N != 0:
+        try:
+            largest_LD = list_of_LDs[0:N]
+        except:
+            largest_LD = list_of_LDs + [0]*(N-len(list_of_LDs))
+    else:
+        return list_of_LDs
+    
+    return largest_LD
+
+def getLongestLengthAllPaths(graph, input_names, output_names):
+    """
+        Takes an list of inputs (leaves), list of outputs (ends) and returns the max length between each input and output
+
+        Assumes the graph is structured such that outputs flow to inputs
+    """
+    LE_path_lengths = []
+    for source in output_names:
+        try:
+            nodes = []
+            paths = nx.all_simple_paths(graph, source, input_names)
+            for path in paths:
+                nodes += [n for n in path if n not in nodes]
+            LE_path_lengths += [dag_longest_path_length(graph.subgraph(nodes))]
+        except Exception as e:
+            pass
+
+    return LE_path_lengths
+
+
+def topNLargestLE(graph_dict, N):
+    """
+        Takes in a graph dictionary of entries containing a graph, list of inputs, a list of outputs and returns the top N paths
+
+        If N = 0, return entire list
+
+        If N < 0, function breaks.
+    """
+    list_of_LEs = []
+    for keys, entry in graph_dict.items():
+        graph = entry["graph"]
+        input_names = entry["inputs"]
+        output_names = entry["outputs"]
+        list_of_LEs += getLongestLengthAllPaths(graph, input_names, output_names)
+    list_of_LEs.sort(reverse=True)
+    if N != 0:
+        try:
+            largest_LE = list_of_LEs[0:N]
+        except:
+            largest_LE = list_of_LEs + [0]*(N-len(list_of_LEs))
+    else:
+        return list_of_LEs
+    
+    return largest_LE
+
+def topNCLBNodeCount(graph_dict,N):
+    """
+        Takes in a dictionary of graphs and returns the node count of each graph
+
+        If N = 0, return all node counts
+
+        N < 0 breaks this function
+    """
+    list_of_nodecounts = []
+    for keys, entry in graph_dict.items():
+        graph = entry["graph"]
+        list_of_nodecounts += [graph.order()]
+    list_of_nodecounts.sort(reverse=True)
+    if N != 0:
+        try:
+            list_of_nodecounts = list_of_nodecounts[0:N]
+        except:
+            list_of_nodecounts = list_of_nodecounts + [0]*(N-len(list_of_nodecounts))
+    else:
+        return list_of_nodecounts
+
+    return list_of_nodecounts
+
+def fanoutList(graph):
+    """
+        Helper function for topNFanouts
+
+        Returns a list of all the fanouts for a given graph
+    """
+    fanouts = []
+    nodes = graph.nodes()
+    for n in nodes:
+        fanouts += [graph.in_degree(n)]
+    return fanouts
+
+def topNFanouts(graph_dict,N):
+    """
+        Takes in a dictionary of graphs and returns the largest fanouts of the graphs combined
+
+        If N = 0, return all node counts
+
+        N < 0 breaks this function
+    """
+    list_of_fanouts = []
+    for keys, entry in graph_dict.items():
+        graph = entry["graph"]
+        list_of_fanouts += fanoutList(graph)
+    list_of_fanouts.sort(reverse=True)
+    if N != 0:
+        try:
+            list_of_fanouts = list_of_fanouts[0:N]
+        except:
+            list_of_fanouts = list_of_fanouts + [0]*(N-len(list_of_fanouts))
+    else:
+        return list_of_fanouts
+
+    return list_of_fanouts
+
 
