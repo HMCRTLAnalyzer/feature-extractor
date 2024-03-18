@@ -1,8 +1,10 @@
 
-# Ignore anything in graphs directory
+# Ignore anything in graphs directory or graphs generated
 /graphs/*
 /graph_pickles/*
 /__pycache__/*
+*.dot*
+*.aig*
 
 # Ignore RTL directory
 /RTL/*
@@ -12,4 +14,4 @@ aigtodot
 
 
 # Ignore log files
-*/*.log*
+*.log*
