@@ -12,6 +12,8 @@
 # Exclude simlink from aigtodot
 aigtodot
 
+# Ignore csvs
+*.csv*
 
 # Ignore log files
 *.log*

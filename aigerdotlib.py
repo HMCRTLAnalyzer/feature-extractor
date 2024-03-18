@@ -295,9 +295,9 @@ def topNLargestLD(graph_dict, N):
         list_of_LDs += getLogicalDepthAllPaths(graph, input_names, output_names)
     list_of_LDs.sort(reverse=True)
     if N != 0:
-        try:
+        if len(list_of_LDs) >= N:
             largest_LD = list_of_LDs[0:N]
-        except:
+        else:
             largest_LD = list_of_LDs + [0]*(N-len(list_of_LDs))
     else:
         return list_of_LDs
@@ -340,9 +340,9 @@ def topNLargestLE(graph_dict, N):
         list_of_LEs += getLongestLengthAllPaths(graph, input_names, output_names)
     list_of_LEs.sort(reverse=True)
     if N != 0:
-        try:
+        if len(list_of_LEs) >= N:
             largest_LE = list_of_LEs[0:N]
-        except:
+        else:
             largest_LE = list_of_LEs + [0]*(N-len(list_of_LEs))
     else:
         return list_of_LEs
@@ -363,9 +363,9 @@ def topNCLBNodeCount(graph_dict,N):
         list_of_nodecounts += [graph.order()]
     list_of_nodecounts.sort(reverse=True)
     if N != 0:
-        try:
+        if len(list_of_nodecounts) >= N:
             list_of_nodecounts = list_of_nodecounts[0:N]
-        except:
+        else:
             list_of_nodecounts = list_of_nodecounts + [0]*(N-len(list_of_nodecounts))
     else:
         return list_of_nodecounts
@@ -398,9 +398,9 @@ def topNFanouts(graph_dict,N):
         list_of_fanouts += fanoutList(graph)
     list_of_fanouts.sort(reverse=True)
     if N != 0:
-        try:
+        if len(list_of_fanouts) >= N:
             list_of_fanouts = list_of_fanouts[0:N]
-        except:
+        else:
             list_of_fanouts = list_of_fanouts + [0]*(N-len(list_of_fanouts))
     else:
         return list_of_fanouts
