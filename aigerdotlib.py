@@ -10,6 +10,10 @@ from networkx.algorithms import *
 from pprint import *
 import os
 from datetime import datetime
+import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 def getDiGraphSuccessors(graph, node):
     """
@@ -79,7 +83,7 @@ def logicalEffortEdgeMap(graph):
 
 def replaceBufWithLatch(graph):
     """
-        Removes buffers inserted between latches and gates
+        Removes buffers inserted between inputs
 
         Input: graph
         Output: graph with buffers removed
@@ -88,6 +92,7 @@ def replaceBufWithLatch(graph):
     for n in original_graph.nodes():
         input = [s for s in original_graph.successors(n) if s[0] == "I" and s[1] != "L"]
         if input:
+            logging.debug(f"Input {n} has buffers {input}")
             s = input[0]
             rm_edge_list = [(p, n) for p in original_graph.predecessors(n)]
             add_edge_list = [(p, s) for p in original_graph.predecessors(n)]
@@ -96,12 +101,6 @@ def replaceBufWithLatch(graph):
             graph.remove_node(n)
 
     return graph
-
-
-def removeEdgesBetweenLatchNodes(graph):
-    """
-        Removes edges between latch nodes if the
-    """
 
 
 def replaceEdgesWithNotNodes(graph):
@@ -121,8 +120,9 @@ def replaceEdgesWithNotNodes(graph):
         rm_edge_list = []
         p_not_list = []
         for p in original_graph.predecessors(n):
-            # Case 2: NOT from latch output
-            if "IL" in p:
+            # Case 2: NOT from input
+            if "I" in n:
+                logging.debug(f"Predecessor {n} is an input")
                 if original_graph[p][n]["arrowhead"] == "dot":
                     rm_edge_list += [(p,n)]
                     p_not_list += [p]
@@ -148,7 +148,7 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
         and cuts it into a dictionary of graphs defined as follows
             graph_dict[i] = {"graph", "inputs", "outputs"}
     """
-
+    
     original_graph = nx.DiGraph(nx.nx_pydot.read_dot(filepath))
     nodes = list(original_graph.nodes)
 
@@ -172,11 +172,12 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
         if latch_list:
             current_latch = latch_list.pop(0)
             latchName = f"I{current_latch}"
-            latch_edge_rm += [(latchName, current_latch)]
+            latch_edge_rm += [(current_latch, latchName)]
             mapping[node] = latchName
 
-    # Write changes found above and get new mapping
+    # Write changes found above, get new node mapping, and remove connections between latches
     original_graph = nx.relabel_nodes(original_graph, mapping, copy=False)
+    original_graph.remove_edges_from(latch_edge_rm)
     nodes = list(original_graph.nodes)
 
     OL_found = []
@@ -190,7 +191,6 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
         if any(x in node for x in output_basenames) and (node not in OL_found): # See if the node name contains any strings from the list for output/latch names
             output_names += [node]
             seen_nodes = [node]
-            successors = original_graph.successors(node) # get nodes which feed into this latch/output
 
             # Add found nodes to search_list for this node
             search_list = [node]
@@ -198,25 +198,29 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
             # Iterate through search list after addin entries
             while search_list:
                 current_nodes = search_list.pop(0)
+                logging.debug(f"Searching adj for {current_nodes}")
                 seen_nodes += [current_nodes]
                 successors = getDiGraphSuccessors(original_graph, current_nodes)
                 predecessors = getDiGraphPredecessors(original_graph, current_nodes)
                 adj = list(set(successors + predecessors))
+                logging.debug(f"Adjacent nodes to {current_nodes} are: {adj}")
 
                 # Add nodes not seen before into list of future search nodes
                 new_nodes = [x for x in adj if (x not in seen_nodes) and (x not in search_list) and not any(y in x for y in IO_basenames)]
                 other_nodes = [x for x in adj if any(y in x for y in IO_basenames)]
+                logging.debug(f"Saw new nodes {new_nodes} and {other_nodes}")
         
                 # When we find a terminating node, add it to the list of found terminating nodes and ignore them for the future
                 output_names += [x for x in other_nodes if any(y in x for y in output_basenames) and x[0] != "I"]
+                if output_names:
+                    logging.debug(f"Adding new output names {output_names}")
                 seen_nodes = list(set(seen_nodes + other_nodes))
 
                 # Get nodes who match IO_basenames
-                predecessors = [x for x in predecessors]
-                adj = [x for x in adj]
                 search_list += new_nodes
 
             # Create graph using connected nodes
+            logging.debug(f"Created subgraph using {seen_nodes}")
             sub_graph = original_graph.subgraph(seen_nodes).copy()
 
             # From seen nodes, grab input nodes
@@ -256,7 +260,30 @@ def generateDOT(srcdir, module, language):
     # Generate path based on makefile
     dot_filepath = f"{results_path}/{module}.dot"
 
+    logger.info(f"DOT file for {module} generated at {dot_filepath}")
+
     return dot_filepath
+
+
+def getNodesOnPath(graph, source):
+    """
+        Takes in a graph and a source node and returns a list of every node
+        which is a successor of the source node or its successors.
+
+        Looping search algorithm
+    """
+    search_list = [source]
+    seen_list = []
+    while search_list:
+        current_node = search_list.pop(0)
+        seen_list += [current_node]
+        next_nodes = getDiGraphSuccessors(graph, current_node)
+
+        # Only add nodes if not in queue or already searched
+        search_list += [n for n in next_nodes if (n not in search_list) and (n not in (seen_list))]
+    logger.debug(f"Found nodes {seen_list} stemming from {source}")
+    return seen_list
+
 
 
 def getLogicalDepthAllPaths(graph, input_names, output_names):
@@ -267,14 +294,13 @@ def getLogicalDepthAllPaths(graph, input_names, output_names):
     """
     logical_depth_lengths = []
     for source in output_names:
+        logger.debug(source)
         try:
-            nodes = []
-            paths = nx.all_simple_paths(graph, source, input_names)
-            for path in paths:
-                nodes += [n for n in path if n not in nodes]
+            nodes = getNodesOnPath(graph, source)
+            logger.debug(f"Getting longest path for {nodes}")
             logical_depth_lengths += [len(dag_longest_path(graph.subgraph(nodes)))]
         except Exception as e:
-            pass
+            logger.warn(e)
 
     return logical_depth_lengths
 
@@ -313,13 +339,10 @@ def getLongestLengthAllPaths(graph, input_names, output_names):
     LE_path_lengths = []
     for source in output_names:
         try:
-            nodes = []
-            paths = nx.all_simple_paths(graph, source, input_names)
-            for path in paths:
-                nodes += [n for n in path if n not in nodes]
+            nodes = getNodesOnPath(graph, source)
             LE_path_lengths += [dag_longest_path_length(graph.subgraph(nodes))]
         except Exception as e:
-            pass
+            logger.warn(e)
 
     return LE_path_lengths
 

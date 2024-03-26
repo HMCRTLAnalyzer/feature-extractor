@@ -6,15 +6,16 @@ import numpy as np
 import pandas as pd
 import pickle
 import argparse
+import logging
+import time
 
-
-
-
-
-csv_in_filepath = "diffs_test_paths.csv"
-csv_out_filepath = "teststats.csv"
+N = 350
+csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
+csv_out_filepath = f"/home/qualcomm_clinic/top{N}_MLdata"
+logfile = f"logs/run_{1}.log"
+# logfile = f"logs/run_{time.strftime("%H%M")}.log"
 pickle_dirpath = "./graph_pickles"
-regenerate_pickles = 0
+regenerate_pickles = 1
 openABCD_df = pd.read_csv(csv_in_filepath)
 openABCD_df = openABCD_df.loc[:,["module","path_to_rtl","language","sensitive","memory"]]
 print(openABCD_df)
@@ -22,7 +23,6 @@ print(openABCD_df)
 # Define Parameters for dataframe and analysis
 IO_basenames = ["I","O","L"]
 output_basenames = ["O","L"]
-N = 5
 
 nlist = list(range(N))
 nlist.sort(reverse=True)
@@ -36,6 +36,9 @@ df_list = []
 
 graph_dict = {}
 graph_dict["module"] = []
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename=logfile,level=logging.INFO)
 
 for row in openABCD_df.itertuples(index=False):
     module = row[0]
@@ -51,6 +54,24 @@ for row in openABCD_df.itertuples(index=False):
             dot_filepath = generateDOT(path_to_rtl, module, language)
             print(f"Generating pickle for {module}")
             graph_dict = cutAIGERtoDAGs(dot_filepath, IO_basenames, output_basenames)
+            idx = 0
+            for key, entry in graph_dict.items():
+                graph = entry["graph"]
+                replaceEdgesWithNotNodes(graph)
+                replaceBufWithLatch(graph)
+                logicalEffortEdgeMap(graph)
+                idx += 1
+            with open(graph_filepath, "wb") as handle:
+                pickle.dump(graph_dict, handle)
+        
+        graph_file = open(graph_filepath,"rb")
+        graph_dict = pickle.load(graph_file)
+    except Exception as e:
+        try:
+            dot_filepath = generateDOT(path_to_rtl, module, language)
+            print(f"Generating pickle for {module}")
+            graph_dict = cutAIGERtoDAGs(dot_filepath, IO_basenames, output_basenames)
+            idx = 0
             for key, entry in graph_dict.items():
                 graph = entry["graph"]
                 replaceEdgesWithNotNodes(graph)
@@ -58,24 +79,12 @@ for row in openABCD_df.itertuples(index=False):
                 logicalEffortEdgeMap(graph)
             with open(graph_filepath, "wb") as handle:
                 pickle.dump(graph_dict, handle)
-        
-        graph_file = open(graph_filepath,"rb")
-        graph_dict = pickle.load(graph_file)
-    except:
-        dot_filepath = generateDOT(path_to_rtl, module, language)
-        print(f"Generating pickle for {module}")
-        graph_dict = cutAIGERtoDAGs(dot_filepath, IO_basenames, output_basenames)
-        idx = 0
-        for key, entry in graph_dict.items():
-            graph = entry["graph"]
-            replaceEdgesWithNotNodes(graph)
-            replaceBufWithLatch(graph)
-            logicalEffortEdgeMap(graph)
-            nx.nx_pydot.write_dot(graph,f"{idx}.dot")
-            idx += 1
-        with open(graph_filepath, "wb") as handle:
-            pickle.dump(graph_dict, handle)
-
+        except Exception as e:
+            logger.error(f"Synthesis failed for {module} with error {e}")
+    finally:
+        pass
+    logger.debug(graph_dict)
+    logger.info(f"Analyzing {module}")
     LD = topNLargestLD(graph_dict,N)
     LE = topNLargestLE(graph_dict,N)
     LNC = topNCLBNodeCount(graph_dict,N)
