@@ -15,5 +15,8 @@ aigtodot
 # Ignore csvs
 *.csv*
 
+# Ignore test files
+basiccyclic.py
+
 # Ignore log files
 *.log*

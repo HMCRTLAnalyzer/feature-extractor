@@ -264,31 +264,55 @@ def generateDOT(srcdir, module, language):
 
     return dot_filepath
 
-
-def getNodeToposort(graph, source, targets):
-    nodes = []
-
-    return nodes
-
-
-def getNodesOnPath(graph, source):
+def getNodesOnPath(graph, output_list):
     """
-        Takes in a graph and a source node and returns a list of every node
-        which is a successor of the source node or its successors.
+        Takes in a graph and returns a dictionary with keys that point to a list of connected nodes
 
-        Looping search algorithm
+        Algorithm for searching modified from https://networkx.org/nx-guides/content/algorithms/dag/index.html.
+
+        Searches a list of 
     """
-    search_list = [source]
-    seen_list = []
-    while search_list:
-        current_node = search_list.pop(0)
-        seen_list += [current_node]
-        next_nodes = getDiGraphSuccessors(graph, current_node)
 
-        # Only add nodes if not in queue or already searched
-        search_list += [n for n in next_nodes if (n not in search_list) and (n not in (seen_list))]
-    logger.debug(f"Found nodes {seen_list} stemming from {source}")
-    return seen_list
+    if not graph.is_directed():
+        raise nx.NetworkXError("Topological sort not defined on undirected graphs.")
+
+    # Get top-level nodes
+    indegree_map = {n: d for n, d in graph.in_degree() if d > 0}
+    zero_indegree = [v for v, d in graph.in_degree() if d == 0]
+    node_mapping = {n: set(*()) for n, d in graph.in_degree() if d > 0}
+    node_dict = {v: {v} for v in zero_indegree}
+    logger.debug(f"Initialized zero_indegree: {zero_indegree}")
+    logger.debug(f"Initialized empty sets for node mapping: {node_mapping}")
+
+    while zero_indegree:
+        this_generation = zero_indegree
+        zero_indegree = []
+        for node in this_generation:
+            for child in graph.neighbors(node):
+                # Create mapping for child nodes to map to upstream outputs
+                if node in output_list:
+                    logging.debug(f"Initializing mapping for {child} to {node}")
+                    node_mapping[child] |= {node}
+                else:
+                    logging.debug(f"Adding existing mapping {node_mapping[node]} to {child}")
+                    node_mapping[child] |= node_mapping[node]
+                
+                for output_node in node_mapping[child]:
+                    node_dict[output_node] |= {child}
+
+                indegree_map[child] -= 1
+                if indegree_map[child] == 0:
+                    logging.debug(f"Removed {child} from indegree mapping")
+                    zero_indegree.append(child)
+                    del indegree_map[child]
+    logger.debug(f"Found {node_dict} while doing getNodesOnPath")
+
+    if indegree_map:
+        raise nx.NetworkXUnfeasible(
+            "Graph contains a cycle or graph changed during iteration"
+        )
+    return node_dict
+
 
 
 
@@ -299,12 +323,11 @@ def getLogicalDepthAllPaths(graph, input_names, output_names):
         Assumes the graph is structured such that outputs flow to inputs
     """
     logical_depth_lengths = []
-    for source in output_names:
-        logger.debug(source)
+    node_dict = getNodesOnPath(graph, output_names)
+    for keys, entry in node_dict.items():
         try:
-            nodes = getNodesOnPath(graph, source)
-            logger.debug(f"Getting longest path for {nodes}")
-            logical_depth_lengths += [len(dag_longest_path(graph.subgraph(nodes)))]
+            logger.debug(f"Getting longest path length for {keys} with nodes {entry}")
+            logical_depth_lengths += [len(dag_longest_path(graph.subgraph(entry)))]
         except Exception as e:
             logger.warn(e)
 
@@ -343,10 +366,11 @@ def getLongestLengthAllPaths(graph, input_names, output_names):
         Assumes the graph is structured such that outputs flow to inputs
     """
     LE_path_lengths = []
-    for source in output_names:
+    node_dict = getNodesOnPath(graph, output_names)
+    for keys, entry in node_dict.items():
         try:
-            nodes = getNodesOnPath(graph, source)
-            LE_path_lengths += [dag_longest_path_length(graph.subgraph(nodes))]
+            logger.debug(f"Getting longest path length for {keys} with nodes {entry}")
+            LE_path_lengths += [dag_longest_path_length(graph.subgraph(entry))]
         except Exception as e:
             logger.warn(e)
 
