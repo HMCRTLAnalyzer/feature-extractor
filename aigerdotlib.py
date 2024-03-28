@@ -265,6 +265,12 @@ def generateDOT(srcdir, module, language):
     return dot_filepath
 
 
+def getNodeToposort(graph, source, targets):
+    nodes = []
+
+    return nodes
+
+
 def getNodesOnPath(graph, source):
     """
         Takes in a graph and a source node and returns a list of every node

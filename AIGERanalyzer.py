@@ -11,11 +11,11 @@ import time
 
 N = 350
 csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
-csv_out_filepath = f"/home/qualcomm_clinic/top{N}_MLdata"
+csv_out_filepath = f"../top{N}_MLdata"
 logfile = f"logs/run_{1}.log"
 # logfile = f"logs/run_{time.strftime("%H%M")}.log"
 pickle_dirpath = "./graph_pickles"
-regenerate_pickles = 1
+regenerate_pickles = 0
 openABCD_df = pd.read_csv(csv_in_filepath)
 openABCD_df = openABCD_df.loc[:,["module","path_to_rtl","language","sensitive","memory"]]
 print(openABCD_df)
@@ -94,5 +94,6 @@ for row in openABCD_df.itertuples(index=False):
     df_list += [dict(zip(stats_col,vals))]
 
 # After getting all df items, create dataframe and save it to a csv.
+logger.info(f"Wrote dataset csv to {csv_out_filepath}")
 stats_df = pd.DataFrame(data=df_list)
 stats_df.to_csv(csv_out_filepath)
