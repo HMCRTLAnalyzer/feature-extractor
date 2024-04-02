@@ -149,6 +149,8 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
             graph_dict[i] = {"graph", "inputs", "outputs"}
     """
     
+    start = time.time()
+
     original_graph = nx.DiGraph(nx.nx_pydot.read_dot(filepath))
     nodes = list(original_graph.nodes)
 
@@ -236,6 +238,9 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
 
             i += 1
     
+    end = time.time()
+    logger.info(f"Time to cut {filepath} into DAGs: {end - start}s")
+
     return graph_dict
 
 
@@ -272,7 +277,6 @@ def getNodesOnPath(graph, output_list):
 
         Searches a list of 
     """
-
     if not graph.is_directed():
         raise nx.NetworkXError("Topological sort not defined on undirected graphs.")
 
@@ -342,6 +346,7 @@ def topNLargestLD(graph_dict, N):
 
         If N < 0, function breaks.
     """
+    start = time.time()
     list_of_LDs = []
     for keys, entry in graph_dict.items():
         graph = entry["graph"]
@@ -357,6 +362,9 @@ def topNLargestLD(graph_dict, N):
     else:
         return list_of_LDs
     
+    end = time.time()
+    logger.info(f"Took {end - start}s to calculate Logical Effort Stats")
+
     return largest_LD
 
 def getLongestLengthAllPaths(graph, input_names, output_names):
@@ -385,6 +393,8 @@ def topNLargestLE(graph_dict, N):
 
         If N < 0, function breaks.
     """
+    start = time.time()
+
     list_of_LEs = []
     for keys, entry in graph_dict.items():
         graph = entry["graph"]
@@ -400,6 +410,9 @@ def topNLargestLE(graph_dict, N):
     else:
         return list_of_LEs
     
+    end = time.time()
+    logger.info(f"Took {end - start}s to calculate Logical Effort Stats")
+    
     return largest_LE
 
 def topNCLBNodeCount(graph_dict,N):
@@ -410,6 +423,8 @@ def topNCLBNodeCount(graph_dict,N):
 
         N < 0 breaks this function
     """
+    start = time.time()
+
     list_of_nodecounts = []
     for keys, entry in graph_dict.items():
         graph = entry["graph"]
@@ -422,6 +437,9 @@ def topNCLBNodeCount(graph_dict,N):
             list_of_nodecounts = list_of_nodecounts + [0]*(N-len(list_of_nodecounts))
     else:
         return list_of_nodecounts
+
+    end = time.time()
+    logger.info(f"Took {end - start}s to calculate Node Count Stats")
 
     return list_of_nodecounts
 
@@ -445,6 +463,8 @@ def topNFanouts(graph_dict,N):
 
         N < 0 breaks this function
     """
+    start = time.time()
+
     list_of_fanouts = []
     for keys, entry in graph_dict.items():
         graph = entry["graph"]
@@ -457,6 +477,9 @@ def topNFanouts(graph_dict,N):
             list_of_fanouts = list_of_fanouts + [0]*(N-len(list_of_fanouts))
     else:
         return list_of_fanouts
+    
+    end = time.time()
+    logger.info(f"Took {end - start}s to calculate Fanout Stats")
 
     return list_of_fanouts
 

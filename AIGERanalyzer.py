@@ -2,6 +2,7 @@
 
 # Import libraries
 from aigerdotlib import *
+import os
 import numpy as np
 import pandas as pd
 import pickle
@@ -11,9 +12,12 @@ import time
 
 N = 350
 csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
-csv_out_filepath = f"../top{N}_MLdata"
-logfile = f"logs/run_{1}.log"
-# logfile = f"logs/run_{time.strftime("%H%M")}.log"
+csv_out_filepath = f"processed_data/top{N}_MLdata.csv"
+csv_temp_filepath = f"processed_data/temp_top{N}.csv"
+# csv_in_filepath = "bruh2.csv"
+# csv_out_filepath = "Robstats.csv"
+curr_time = time.strftime("%Y-%d_%H%M")
+logfile = f"logs/run_{curr_time}.log"
 pickle_dirpath = "./graph_pickles"
 regenerate_pickles = 0
 openABCD_df = pd.read_csv(csv_in_filepath)
@@ -36,6 +40,10 @@ df_list = []
 
 graph_dict = {}
 graph_dict["module"] = []
+
+# Write stats_col to csv file. ASSUMES YOU ARE ON LINUX
+data_out = ",".join(map(str, stats_col))
+os.system(f"echo {data_out} > {csv_temp_filepath}")
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename=logfile,level=logging.INFO)
@@ -90,6 +98,11 @@ for row in openABCD_df.itertuples(index=False):
     LNC = topNCLBNodeCount(graph_dict,N)
     FN = topNFanouts(graph_dict,N)
     vals = [module, sensitive, memory]+LD+LE+LNC+FN
+
+    logger.info(f"Writing saved stats to existing temp csv file")
+    data_line = [module]+[sensitive]+[memory]+LD+LE+LNC+FN
+    data_out = ",".join(map(str, [str(x) for x in data_line]))
+    os.system(f"echo {data_line} >> {csv_temp_filepath}")
 
     df_list += [dict(zip(stats_col,vals))]
 
