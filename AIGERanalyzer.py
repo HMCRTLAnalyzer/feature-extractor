@@ -11,11 +11,11 @@ import logging
 import time
 
 N = 350
-csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
-csv_out_filepath = f"processed_data/top{N}_MLdata.csv"
-csv_temp_filepath = f"processed_data/temp_top{N}.csv"
-# csv_in_filepath = "bruh2.csv"
-# csv_out_filepath = "Robstats.csv"
+# csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
+# csv_out_filepath = f"processed_data/top{N}_MLdata.csv"
+csv_temp_filepath = f"processed_data/temp_rob{N}.csv"
+csv_in_filepath = "bruh2.csv"
+csv_out_filepath = "Robstats.csv"
 curr_time = time.strftime("%Y-%d_%H%M")
 logfile = f"logs/run_{curr_time}.log"
 pickle_dirpath = "./graph_pickles"
@@ -46,7 +46,7 @@ data_out = ",".join(map(str, stats_col))
 os.system(f"echo {data_out} > {csv_temp_filepath}")
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename=logfile,level=logging.INFO)
+logging.basicConfig(filename=logfile,level=logging.DEBUG)
 
 for row in openABCD_df.itertuples(index=False):
     module = row[0]
