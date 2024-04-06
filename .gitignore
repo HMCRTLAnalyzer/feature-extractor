@@ -1,6 +1,22 @@
 
-# Ignore anything in graphs directory
+# Ignore anything in graphs directory or graphs generated
 /graphs/*
+/graph_pickles/*
+/__pycache__/*
+*.dot*
+*.aig*
 
 # Ignore RTL directory
 /RTL/*
+
+# Exclude simlink from aigtodot
+aigtodot
+
+# Ignore csvs
+*.csv*
+
+# Ignore test files
+basiccyclic.py
+
+# Ignore log files
+*.log*

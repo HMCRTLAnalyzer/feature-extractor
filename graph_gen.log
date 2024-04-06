@@ -1,0 +1,1625 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.35+24 (git sha1 032fab1f5, clang 15.0.7 -fPIC -Os)
+
+1. Executing Liberty frontend: /opt/riscv/cad/lib/sky130_osu_sc_t12/12T_hs/lib/sky130_osu_sc_12T_hs_tt_1P20_25C.ccs.lib
+Imported 55 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_alu.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_alu.v' to AST representation.
+Generating RTLIL representation for module `\omsp_alu'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_and_gate.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_and_gate.v' to AST representation.
+Generating RTLIL representation for module `\omsp_and_gate'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_clock_gate.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_clock_gate.v' to AST representation.
+Generating RTLIL representation for module `\omsp_clock_gate'.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_clock_gate.v:76.1-78.31 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v' to AST representation.
+Generating RTLIL representation for module `\omsp_clock_module'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_clock_mux.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_clock_mux.v' to AST representation.
+Generating RTLIL representation for module `\omsp_clock_mux'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v' to AST representation.
+Generating RTLIL representation for module `\omsp_dbg'.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:240.1-278.10 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:742.1-752.10 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_dbg_hwbrk.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_dbg_hwbrk.v' to AST representation.
+Generating RTLIL representation for module `\omsp_dbg_hwbrk'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_dbg_i2c.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_dbg_i2c.v' to AST representation.
+Generating RTLIL representation for module `\omsp_dbg_i2c'.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_dbg_i2c.v:241.1-272.10 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_dbg_i2c.v:355.1-389.10 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v' to AST representation.
+Generating RTLIL representation for module `\omsp_dbg_uart'.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:160.1-181.10 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v' to AST representation.
+Generating RTLIL representation for module `\omsp_execution_unit'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v' to AST representation.
+Generating RTLIL representation for module `\omsp_frontend'.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:246.1-265.12 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:665.1-697.6 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:716.1-725.6 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:742.1-761.6 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:853.1-884.12 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v' to AST representation.
+Generating RTLIL representation for module `\omsp_mem_backbone'.
+Successfully finished Verilog frontend.
+
+14. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v' to AST representation.
+Generating RTLIL representation for module `\omsp_multiplier'.
+Successfully finished Verilog frontend.
+
+15. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v' to AST representation.
+Generating RTLIL representation for module `\omsp_register_file'.
+Successfully finished Verilog frontend.
+
+16. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_scan_mux.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_scan_mux.v' to AST representation.
+Generating RTLIL representation for module `\omsp_scan_mux'.
+Successfully finished Verilog frontend.
+
+17. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v' to AST representation.
+Generating RTLIL representation for module `\omsp_sfr'.
+Successfully finished Verilog frontend.
+
+18. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_sync_cell.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_sync_cell.v' to AST representation.
+Generating RTLIL representation for module `\omsp_sync_cell'.
+Successfully finished Verilog frontend.
+
+19. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_sync_reset.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_sync_reset.v' to AST representation.
+Generating RTLIL representation for module `\omsp_sync_reset'.
+Successfully finished Verilog frontend.
+
+20. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_wakeup_cell.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_wakeup_cell.v' to AST representation.
+Generating RTLIL representation for module `\omsp_wakeup_cell'.
+Successfully finished Verilog frontend.
+
+21. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v' to AST representation.
+Generating RTLIL representation for module `\omsp_watchdog'.
+Note: Assuming pure combinatorial block at RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:505.1-511.12 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+22. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//openMSP430.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//openMSP430.v' to AST representation.
+Generating RTLIL representation for module `\openMSP430'.
+Successfully finished Verilog frontend.
+
+23. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//openMSP430_defines.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//openMSP430_defines.v' to AST representation.
+Successfully finished Verilog frontend.
+
+24. Executing Verilog-2005 frontend: RTL/opencores-ip/core/rtl/verilog//openMSP430_undefines.v
+Parsing SystemVerilog input from `RTL/opencores-ip/core/rtl/verilog//openMSP430_undefines.v' to AST representation.
+Successfully finished Verilog frontend.
+
+25. Executing HIERARCHY pass (managing design hierarchy).
+
+25.1. Analyzing design hierarchy..
+Top module:  \openMSP430
+Used module:     \omsp_dbg
+Used module:         \omsp_dbg_uart
+Used module:             \omsp_sync_cell
+Used module:     \omsp_multiplier
+Used module:     \omsp_watchdog
+Used module:     \omsp_sfr
+Used module:     \omsp_mem_backbone
+Used module:     \omsp_execution_unit
+Used module:         \omsp_alu
+Used module:         \omsp_register_file
+Used module:     \omsp_frontend
+Used module:     \omsp_clock_module
+Used module:         \omsp_sync_reset
+
+25.2. Analyzing design hierarchy..
+Top module:  \openMSP430
+Used module:     \omsp_dbg
+Used module:         \omsp_dbg_uart
+Used module:             \omsp_sync_cell
+Used module:     \omsp_multiplier
+Used module:     \omsp_watchdog
+Used module:     \omsp_sfr
+Used module:     \omsp_mem_backbone
+Used module:     \omsp_execution_unit
+Used module:         \omsp_alu
+Used module:         \omsp_register_file
+Used module:     \omsp_frontend
+Used module:     \omsp_clock_module
+Used module:         \omsp_sync_reset
+Removing unused module `\omsp_wakeup_cell'.
+Removing unused module `\omsp_scan_mux'.
+Removing unused module `\omsp_dbg_i2c'.
+Removing unused module `\omsp_dbg_hwbrk'.
+Removing unused module `\omsp_clock_mux'.
+Removing unused module `\omsp_clock_gate'.
+Removing unused module `\omsp_and_gate'.
+Removing unused module `\sky130_osu_sc_12T_hs__xor2_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__xnor2_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__tnbufi_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__tnbufi_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__tielo'.
+Removing unused module `\sky130_osu_sc_12T_hs__tiehi'.
+Removing unused module `\sky130_osu_sc_12T_hs__tbufi_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__tbufi_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__or2_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__or2_8'.
+Removing unused module `\sky130_osu_sc_12T_hs__or2_4'.
+Removing unused module `\sky130_osu_sc_12T_hs__or2_2'.
+Removing unused module `\sky130_osu_sc_12T_hs__or2_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__oai22_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__oai21_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__nor2_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__nor2_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__nand2_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__nand2_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__mux2_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_8'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_6'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_4'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_3'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_2'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_10'.
+Removing unused module `\sky130_osu_sc_12T_hs__inv_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__dffsr_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__dffsr_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__dffs_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__dffs_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__dffr_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__dffr_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__dff_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__dff_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__buf_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__buf_8'.
+Removing unused module `\sky130_osu_sc_12T_hs__buf_6'.
+Removing unused module `\sky130_osu_sc_12T_hs__buf_4'.
+Removing unused module `\sky130_osu_sc_12T_hs__buf_2'.
+Removing unused module `\sky130_osu_sc_12T_hs__buf_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__aoi22_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__aoi21_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__ant'.
+Removing unused module `\sky130_osu_sc_12T_hs__and2_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__and2_8'.
+Removing unused module `\sky130_osu_sc_12T_hs__and2_6'.
+Removing unused module `\sky130_osu_sc_12T_hs__and2_4'.
+Removing unused module `\sky130_osu_sc_12T_hs__and2_2'.
+Removing unused module `\sky130_osu_sc_12T_hs__and2_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__addh_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__addh_1'.
+Removing unused module `\sky130_osu_sc_12T_hs__addf_l'.
+Removing unused module `\sky130_osu_sc_12T_hs__addf_1'.
+Removed 62 unused modules.
+
+26. Executing PROC pass (convert processes to netlists).
+
+26.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+26.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497 in module omsp_alu.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485 in module omsp_alu.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473 in module omsp_alu.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461 in module omsp_alu.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:564$2185 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:540$2182 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:516$2179 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:492$2176 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:468$2173 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:444$2170 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:420$2167 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:396$2164 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:372$2161 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:348$2158 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:324$2155 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:300$2152 in module omsp_register_file.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:272$2149 in module omsp_register_file.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:242$2143 in module omsp_register_file.
+Marked 3 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:161$2124 in module omsp_register_file.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:380$2103 in module omsp_multiplier.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:322$2099 in module omsp_multiplier.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:311$2097 in module omsp_multiplier.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:271$2083 in module omsp_multiplier.
+Marked 3 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:252$2081 in module omsp_multiplier.
+Marked 3 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:223$2079 in module omsp_multiplier.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:196$2078 in module omsp_multiplier.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:171$2077 in module omsp_multiplier.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:257$2037 in module omsp_mem_backbone.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:243$2033 in module omsp_mem_backbone.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:230$2031 in module omsp_mem_backbone.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:220$2030 in module omsp_mem_backbone.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:204$2022 in module omsp_mem_backbone.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:193$2021 in module omsp_mem_backbone.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:974$1840 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:887$1803 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:853$1793 in module omsp_frontend.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:834$1780 in module omsp_frontend.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:828$1774 in module omsp_frontend.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:822$1771 in module omsp_frontend.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:816$1768 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:786$1748 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:779$1733 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:764$1732 in module omsp_frontend.
+Marked 6 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:742$1728 in module omsp_frontend.
+Marked 6 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:716$1727 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:701$1726 in module omsp_frontend.
+Marked 8 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:665$1721 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:628$1715 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:610$1709 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:595$1708 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:562$1705 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:539$1704 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:514$1701 in module omsp_frontend.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:475$1686 in module omsp_frontend.
+Marked 3 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:448$1679 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:406$1653 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:400$1652 in module omsp_frontend.
+Marked 65 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:294$1432 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:279$1429 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:268$1414 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:246$1388 in module omsp_frontend.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:407$1342 in module omsp_execution_unit.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:392$1340 in module omsp_execution_unit.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:387$1338 in module omsp_execution_unit.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:378$1334 in module omsp_execution_unit.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:364$1324 in module omsp_execution_unit.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:279$1103 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:274$1102 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:264$1100 in module omsp_dbg_uart.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:254$1099 in module omsp_dbg_uart.
+Marked 3 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:243$1094 in module omsp_dbg_uart.
+Marked 3 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:237$1091 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:213$1073 in module omsp_dbg_uart.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:203$1065 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:184$1051 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:160$1035 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:128$1029 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:116$1023 in module omsp_dbg_uart.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_reset.v:70$2296 in module omsp_sync_reset.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:784$755 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:755$728 in module omsp_dbg.
+Removed 1 dead cases from process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:742$723 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:742$723 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:722$715 in module omsp_dbg.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:711$711 in module omsp_dbg.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:692$701 in module omsp_dbg.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:675$692 in module omsp_dbg.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:642$681 in module omsp_dbg.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:446$658 in module omsp_dbg.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:433$651 in module omsp_dbg.
+Marked 3 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:414$635 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:396$630 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:389$629 in module omsp_dbg.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:354$625 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:328$616 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:240$613 in module omsp_dbg.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_cell.v:72$2295 in module omsp_sync_cell.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:980$584 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:881$578 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:877$576 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:732$562 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:728$558 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:474$541 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:244$531 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:207$529 in module omsp_clock_module.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:343$2291 in module omsp_sfr.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:202$2275 in module omsp_sfr.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:182$2274 in module omsp_sfr.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:172$2273 in module omsp_sfr.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:543$2333 in module omsp_watchdog.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:527$2330 in module omsp_watchdog.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:505$2324 in module omsp_watchdog.
+Marked 2 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:495$2323 in module omsp_watchdog.
+Marked 1 switch rules as full_case in process $proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:191$2309 in module omsp_watchdog.
+Removed a total of 1 dead cases.
+
+26.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 31 redundant assignments.
+Promoted 84 assignments to connections.
+
+26.4. Executing PROC_INIT pass (extract init attributes).
+
+26.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:564$2185'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:540$2182'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:516$2179'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:492$2176'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:468$2173'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:444$2170'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:420$2167'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:396$2164'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:372$2161'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:348$2158'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:324$2155'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:300$2152'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:272$2149'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:242$2143'.
+Found async reset \puc_rst in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:161$2124'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:380$2103'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:322$2099'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:311$2097'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:271$2083'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:252$2081'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:223$2079'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:196$2078'.
+Found async reset \puc_rst in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:171$2077'.
+Found async reset \puc_rst in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:257$2037'.
+Found async reset \puc_rst in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:243$2033'.
+Found async reset \puc_rst in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:230$2031'.
+Found async reset \puc_rst in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:220$2030'.
+Found async reset \puc_rst in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:204$2022'.
+Found async reset \puc_rst in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:193$2021'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:974$1840'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:887$1803'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:834$1780'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:828$1774'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:822$1771'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:816$1768'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:786$1748'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:779$1733'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:764$1732'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:701$1726'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:628$1715'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:610$1709'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:595$1708'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:562$1705'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:539$1704'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:514$1701'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:475$1686'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:448$1679'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:406$1653'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:400$1652'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:294$1432'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:279$1429'.
+Found async reset \puc_rst in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:268$1414'.
+Found async reset \puc_rst in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:407$1342'.
+Found async reset \puc_rst in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:392$1340'.
+Found async reset \puc_rst in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:387$1338'.
+Found async reset \puc_rst in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:378$1334'.
+Found async reset \puc_rst in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:364$1324'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:279$1103'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:274$1102'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:264$1100'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:254$1099'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:243$1094'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:237$1091'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:213$1073'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:203$1065'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:184$1051'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:128$1029'.
+Found async reset \dbg_rst in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:116$1023'.
+Found async reset \rst_a in `\omsp_sync_reset.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_reset.v:70$2296'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:784$755'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:755$728'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:722$715'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:711$711'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:692$701'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:675$692'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:642$681'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:446$658'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:433$651'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:414$635'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:396$630'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:389$629'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:354$625'.
+Found async reset \dbg_rst in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:328$616'.
+Found async reset \rst in `\omsp_sync_cell.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_cell.v:72$2295'.
+Found async reset \por in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:980$584'.
+Found async reset \puc_rst in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:881$578'.
+Found async reset \puc_rst in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:877$576'.
+Found async reset \puc_rst in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:732$562'.
+Found async reset \puc_rst in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:728$558'.
+Found async reset \por in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:474$541'.
+Found async reset \puc_rst in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:244$531'.
+Found async reset \puc_rst in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:207$529'.
+Found async reset \puc_rst in `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:343$2291'.
+Found async reset \puc_rst in `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:202$2275'.
+Found async reset \puc_rst in `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:182$2274'.
+Found async reset \puc_rst in `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:172$2273'.
+Found async reset \por in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:543$2333'.
+Found async reset \por in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:527$2330'.
+Found async reset \puc_rst in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:495$2323'.
+Found async reset \puc_rst in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:191$2309'.
+
+26.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 1 switch.
+<suppressed ~211 debug messages>
+
+26.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+     1/1: $1\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:188$366.$result[4:0]$507
+Creating decoders for process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+     1/1: $1\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:187$365.$result[4:0]$495
+Creating decoders for process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+     1/1: $1\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:186$364.$result[4:0]$483
+Creating decoders for process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+     1/1: $1\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:185$363.$result[4:0]$471
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:564$2185'.
+     1/1: $0\r15[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:540$2182'.
+     1/1: $0\r14[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:516$2179'.
+     1/1: $0\r13[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:492$2176'.
+     1/1: $0\r12[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:468$2173'.
+     1/1: $0\r11[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:444$2170'.
+     1/1: $0\r10[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:420$2167'.
+     1/1: $0\r9[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:396$2164'.
+     1/1: $0\r8[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:372$2161'.
+     1/1: $0\r7[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:348$2158'.
+     1/1: $0\r6[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:324$2155'.
+     1/1: $0\r5[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:300$2152'.
+     1/1: $0\r4[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:272$2149'.
+     1/1: $0\r3[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:242$2143'.
+     1/1: $0\r2[15:0]
+Creating decoders for process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:161$2124'.
+     1/1: $0\r1[15:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:380$2103'.
+     1/1: $0\cycle[1:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:322$2099'.
+     1/1: $0\acc_sel[0:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:311$2097'.
+     1/1: $0\sign_sel[0:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:271$2083'.
+     1/1: $0\sumext_s[1:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:252$2081'.
+     1/1: $0\reshi[15:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:223$2079'.
+     1/1: $0\reslo[15:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:196$2078'.
+     1/1: $0\op2[15:0]
+Creating decoders for process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:171$2077'.
+     1/1: $0\op1[15:0]
+Creating decoders for process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:257$2037'.
+     1/1: $0\dbg_mem_din_sel[1:0]
+Creating decoders for process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:243$2033'.
+     1/1: $0\eu_mdb_in_sel[1:0]
+Creating decoders for process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:230$2031'.
+     1/1: $0\pmem_dout_bckup_sel[0:0]
+Creating decoders for process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:220$2030'.
+     1/1: $0\pmem_dout_bckup[15:0]
+Creating decoders for process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:204$2022'.
+     1/1: $0\fe_pmem_cen_dly[0:0]
+Creating decoders for process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:193$2021'.
+     1/1: $0\per_dout_val[15:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:974$1840'.
+     1/1: $0\inst_alu[11:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:887$1803'.
+     1/1: $0\e_state[3:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:853$1793'.
+     1/1: $1\e_state_nxt[3:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:834$1780'.
+     1/1: $0\exec_dext_rdy[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:828$1774'.
+     1/1: $0\exec_src_wr[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:822$1771'.
+     1/1: $0\exec_dst_wr[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:816$1768'.
+     1/1: $0\exec_jmp[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:786$1748'.
+     1/1: $0\inst_sz[1:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:779$1733'.
+     1/1: $0\inst_bw[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:764$1732'.
+     1/1: $0\inst_ad[7:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:742$1728'.
+     1/6: $6\inst_ad_nxt[7:0]
+     2/6: $5\inst_ad_nxt[7:0]
+     3/6: $4\inst_ad_nxt[7:0]
+     4/6: $3\inst_ad_nxt[7:0]
+     5/6: $2\inst_ad_nxt[7:0]
+     6/6: $1\inst_ad_nxt[7:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:716$1727'.
+     1/6: $6\sconst_nxt[15:0]
+     2/6: $5\sconst_nxt[15:0]
+     3/6: $4\sconst_nxt[15:0]
+     4/6: $3\sconst_nxt[15:0]
+     5/6: $2\sconst_nxt[15:0]
+     6/6: $1\sconst_nxt[15:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:701$1726'.
+     1/1: $0\inst_as[7:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:665$1721'.
+     1/8: $8\inst_as_nxt[12:0]
+     2/8: $7\inst_as_nxt[12:0]
+     3/8: $6\inst_as_nxt[12:0]
+     4/8: $5\inst_as_nxt[12:0]
+     5/8: $4\inst_as_nxt[12:0]
+     6/8: $3\inst_as_nxt[12:0]
+     7/8: $2\inst_as_nxt[12:0]
+     8/8: $1\inst_as_nxt[12:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:628$1715'.
+     1/1: $0\inst_src_bin[3:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:610$1709'.
+     1/1: $0\inst_dest_bin[3:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:595$1708'.
+     1/1: $0\inst_mov[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:562$1705'.
+     1/1: $0\inst_jmp_bin[2:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:539$1704'.
+     1/1: $0\inst_so[7:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:514$1701'.
+     1/1: $0\inst_type[2:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:475$1686'.
+     1/1: $0\inst_dext[15:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:448$1679'.
+     1/1: $0\inst_sext[15:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:406$1653'.
+     1/1: $0\pmem_busy[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:400$1652'.
+     1/1: $0\pc[15:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+     1/70: $65\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1643
+     2/70: $64\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1640
+     3/70: $63\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1637
+     4/70: $62\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1634
+     5/70: $61\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1631
+     6/70: $60\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1628
+     7/70: $59\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1625
+     8/70: $58\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1622
+     9/70: $57\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1619
+    10/70: $56\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1616
+    11/70: $55\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1613
+    12/70: $54\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1610
+    13/70: $53\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1607
+    14/70: $52\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1604
+    15/70: $51\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1601
+    16/70: $50\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1598
+    17/70: $49\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1595
+    18/70: $48\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1592
+    19/70: $47\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1589
+    20/70: $46\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1586
+    21/70: $45\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1583
+    22/70: $44\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1580
+    23/70: $43\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1577
+    24/70: $42\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1574
+    25/70: $41\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1571
+    26/70: $40\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1568
+    27/70: $39\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1565
+    28/70: $38\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1562
+    29/70: $37\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1559
+    30/70: $36\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1556
+    31/70: $35\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1553
+    32/70: $34\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1550
+    33/70: $33\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1547
+    34/70: $32\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1544
+    35/70: $31\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1541
+    36/70: $30\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1538
+    37/70: $29\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1535
+    38/70: $28\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1532
+    39/70: $27\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1529
+    40/70: $26\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1526
+    41/70: $25\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1523
+    42/70: $24\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1520
+    43/70: $23\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1517
+    44/70: $22\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1514
+    45/70: $21\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1511
+    46/70: $20\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1508
+    47/70: $19\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1505
+    48/70: $18\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1502
+    49/70: $17\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1499
+    50/70: $16\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1496
+    51/70: $15\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1493
+    52/70: $14\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1490
+    53/70: $13\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1487
+    54/70: $12\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1484
+    55/70: $11\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1481
+    56/70: $10\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1478
+    57/70: $9\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1475
+    58/70: $8\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1472
+    59/70: $7\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1469
+    60/70: $6\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1466
+    61/70: $5\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1463
+    62/70: $4\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1460
+    63/70: $3\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1457
+    64/70: $2\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.ii[31:0]$1454
+    65/70: $2\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1452
+    66/70: $2\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.irq_all[62:0]$1453
+    67/70: $1\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.ii[31:0]$1451
+    68/70: $1\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.irq_all[62:0]$1450
+    69/70: $1\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result[5:0]$1449
+    70/70: $0\irq_num[5:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:294$1432'.
+     1/1: $0\inst_irq_rst[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:279$1429'.
+     1/1: $0\dbg_halt_st[0:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:268$1414'.
+     1/1: $0\i_state[2:0]
+Creating decoders for process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:246$1388'.
+     1/1: $1\i_state_nxt[2:0]
+Creating decoders for process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:407$1342'.
+     1/1: $0\mdb_in_buf[15:0]
+Creating decoders for process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:392$1340'.
+     1/1: $0\mdb_in_buf_valid[0:0]
+Creating decoders for process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:387$1338'.
+     1/1: $0\mdb_in_buf_en[0:0]
+Creating decoders for process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:378$1334'.
+     1/1: $0\mab_lsb[0:0]
+Creating decoders for process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:364$1324'.
+     1/1: $0\mdb_out_nxt[15:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:279$1103'.
+     1/1: $0\dbg_bw[0:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:274$1102'.
+     1/1: $0\dbg_addr[5:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:264$1100'.
+     1/1: $0\dbg_uart_txd[0:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:254$1099'.
+     1/1: $0\xfer_buf[19:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:243$1094'.
+     1/1: $0\xfer_cnt[15:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:237$1091'.
+     1/1: $0\xfer_bit[3:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:213$1073'.
+     1/1: $0\sync_cnt[18:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:203$1065'.
+     1/1: $0\sync_busy[0:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:184$1051'.
+     1/1: $0\uart_state[2:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:160$1035'.
+     1/1: $1\uart_state_nxt[2:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:128$1029'.
+     1/1: $0\rxd_maj[0:0]
+Creating decoders for process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:116$1023'.
+     1/1: $0\rxd_buf[1:0]
+Creating decoders for process `\omsp_sync_reset.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_reset.v:70$2296'.
+     1/1: $0\data_sync[1:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:784$755'.
+     1/1: $0\dbg_mem_rd_dly[0:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:755$728'.
+     1/1: $0\mem_state[1:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:742$723'.
+     1/1: $1\mem_state_nxt[1:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:722$715'.
+     1/1: $0\mem_startb[0:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:711$711'.
+     1/1: $0\mem_burst[0:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:692$701'.
+     1/1: $0\halt_flag[0:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:675$692'.
+     1/1: $0\inc_step[1:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:642$681'.
+     1/1: $0\dbg_rd_rdy[0:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:446$658'.
+     1/1: $0\mem_cnt[15:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:433$651'.
+     1/1: $0\mem_addr[15:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:414$635'.
+     1/1: $0\mem_data[15:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:396$630'.
+     1/1: $0\mem_start[0:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:389$629'.
+     1/1: $0\mem_ctl[2:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:354$625'.
+     1/1: $0\cpu_stat[1:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:328$616'.
+     1/1: $0\cpu_ctl[3:0]
+Creating decoders for process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:240$613'.
+     1/1: $1\reg_dec[24:0]
+Creating decoders for process `\omsp_sync_cell.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_cell.v:72$2295'.
+     1/1: $0\data_sync[1:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:980$584'.
+     1/1: $0\dbg_rst_noscan[0:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:881$578'.
+     1/1: $0\smclk_div[2:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:877$576'.
+     1/1: $0\smclk_en[0:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:732$562'.
+     1/1: $0\aclk_en[0:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:728$558'.
+     1/1: $0\aclk_div[2:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:474$541'.
+     1/1: $0\lfxt_clk_dly[0:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:244$531'.
+     1/1: $0\bcsctl2[7:0]
+Creating decoders for process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:207$529'.
+     1/1: $0\bcsctl1[7:0]
+Creating decoders for process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:343$2291'.
+     1/1: $0\nmi_dly[0:0]
+Creating decoders for process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:202$2275'.
+     1/1: $0\nmiifg[0:0]
+Creating decoders for process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:182$2274'.
+     1/1: $0\wdtie[0:0]
+Creating decoders for process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:172$2273'.
+     1/1: $0\nmie[0:0]
+Creating decoders for process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:543$2333'.
+     1/1: $0\wdt_reset[0:0]
+Creating decoders for process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:527$2330'.
+     1/1: $0\wdtifg[0:0]
+Creating decoders for process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:505$2324'.
+     1/1: $1\wdtqn[0:0]
+Creating decoders for process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:495$2323'.
+     1/1: $0\wdtcnt[15:0]
+Creating decoders for process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:191$2309'.
+     1/1: $0\wdtctl[7:0]
+
+26.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:188$362.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:188$366.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:188$366.X' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:188$366.Y' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:188$366.C_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:188$366.Z_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:187$361.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:187$365.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:187$365.X' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:187$365.Y' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:187$365.C_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:187$365.Z_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:186$360.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:186$364.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:186$364.X' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:186$364.Y' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:186$364.C_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:186$364.Z_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:185$359.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:185$363.$result' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:185$363.X' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:185$363.Y' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:185$363.C_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+No latch inferred for signal `\omsp_alu.\bcd_add$func$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:185$363.Z_' from process `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:639$1353.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:639$1382.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:639$1382.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1383' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1384' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1385' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:636$1352.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:636$1378.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:636$1378.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1379' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1380' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1381' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:623$1351.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:623$1374.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:623$1374.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1375' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1376' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1377' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:618$1350.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:618$1370.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:618$1370.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1371' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1372' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1373' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:591$1349.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:591$1366.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+No latch inferred for signal `\omsp_frontend.\one_hot16$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:591$1366.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1367' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1368' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:166$1369' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+No latch inferred for signal `\omsp_frontend.\one_hot8$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:570$1348.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+No latch inferred for signal `\omsp_frontend.\one_hot8$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:570$1362.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+No latch inferred for signal `\omsp_frontend.\one_hot8$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:570$1362.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:175$1363' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:175$1364' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:175$1365' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+No latch inferred for signal `\omsp_frontend.\one_hot8$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:537$1347.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+No latch inferred for signal `\omsp_frontend.\one_hot8$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:537$1358.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+No latch inferred for signal `\omsp_frontend.\one_hot8$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:537$1358.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:175$1359' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:175$1360' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:175$1361' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+No latch inferred for signal `\omsp_frontend.\one_hot64$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:338$1346.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+No latch inferred for signal `\omsp_frontend.\one_hot64$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:338$1354.$result' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+No latch inferred for signal `\omsp_frontend.\one_hot64$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:338$1354.binary' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$mask$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:157$1355' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$data$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:157$1356' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+No latch inferred for signal `\omsp_frontend.$bitselwrite$sel$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:157$1357' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+No latch inferred for signal `\omsp_frontend.\e_state_nxt' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:853$1793'.
+No latch inferred for signal `\omsp_frontend.\inst_ad_nxt' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:742$1728'.
+No latch inferred for signal `\omsp_frontend.\sconst_nxt' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:716$1727'.
+No latch inferred for signal `\omsp_frontend.\inst_as_nxt' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:665$1721'.
+No latch inferred for signal `\omsp_frontend.\i_state_nxt' from process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:246$1388'.
+No latch inferred for signal `\omsp_dbg_uart.\uart_state_nxt' from process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:160$1035'.
+No latch inferred for signal `\omsp_dbg.\mem_state_nxt' from process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:742$723'.
+No latch inferred for signal `\omsp_dbg.\reg_dec' from process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:240$613'.
+No latch inferred for signal `\omsp_watchdog.\wdtqn' from process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:505$2324'.
+
+26.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\omsp_register_file.\r15' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:564$2185'.
+  created $adff cell `$procdff$3279' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r14' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:540$2182'.
+  created $adff cell `$procdff$3280' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r13' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:516$2179'.
+  created $adff cell `$procdff$3281' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r12' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:492$2176'.
+  created $adff cell `$procdff$3282' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r11' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:468$2173'.
+  created $adff cell `$procdff$3283' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r10' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:444$2170'.
+  created $adff cell `$procdff$3284' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r9' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:420$2167'.
+  created $adff cell `$procdff$3285' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r8' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:396$2164'.
+  created $adff cell `$procdff$3286' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r7' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:372$2161'.
+  created $adff cell `$procdff$3287' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r6' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:348$2158'.
+  created $adff cell `$procdff$3288' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r5' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:324$2155'.
+  created $adff cell `$procdff$3289' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r4' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:300$2152'.
+  created $adff cell `$procdff$3290' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r3' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:272$2149'.
+  created $adff cell `$procdff$3291' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r2' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:242$2143'.
+  created $adff cell `$procdff$3292' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_register_file.\r1' using process `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:161$2124'.
+  created $adff cell `$procdff$3293' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\cycle' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:380$2103'.
+  created $adff cell `$procdff$3294' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\acc_sel' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:322$2099'.
+  created $adff cell `$procdff$3295' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\sign_sel' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:311$2097'.
+  created $adff cell `$procdff$3296' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\sumext_s' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:271$2083'.
+  created $adff cell `$procdff$3297' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\reshi' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:252$2081'.
+  created $adff cell `$procdff$3298' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\reslo' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:223$2079'.
+  created $adff cell `$procdff$3299' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\op2' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:196$2078'.
+  created $adff cell `$procdff$3300' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_multiplier.\op1' using process `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:171$2077'.
+  created $adff cell `$procdff$3301' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_mem_backbone.\dbg_mem_din_sel' using process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:257$2037'.
+  created $adff cell `$procdff$3302' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_mem_backbone.\eu_mdb_in_sel' using process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:243$2033'.
+  created $adff cell `$procdff$3303' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_mem_backbone.\pmem_dout_bckup_sel' using process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:230$2031'.
+  created $adff cell `$procdff$3304' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_mem_backbone.\pmem_dout_bckup' using process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:220$2030'.
+  created $adff cell `$procdff$3305' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_mem_backbone.\fe_pmem_cen_dly' using process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:204$2022'.
+  created $adff cell `$procdff$3306' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_mem_backbone.\per_dout_val' using process `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:193$2021'.
+  created $adff cell `$procdff$3307' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_alu' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:974$1840'.
+  created $adff cell `$procdff$3308' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\e_state' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:887$1803'.
+  created $adff cell `$procdff$3309' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\exec_dext_rdy' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:834$1780'.
+  created $adff cell `$procdff$3310' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\exec_src_wr' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:828$1774'.
+  created $adff cell `$procdff$3311' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\exec_dst_wr' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:822$1771'.
+  created $adff cell `$procdff$3312' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\exec_jmp' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:816$1768'.
+  created $adff cell `$procdff$3313' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_sz' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:786$1748'.
+  created $adff cell `$procdff$3314' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_bw' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:779$1733'.
+  created $adff cell `$procdff$3315' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_ad' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:764$1732'.
+  created $adff cell `$procdff$3316' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_as' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:701$1726'.
+  created $adff cell `$procdff$3317' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_src_bin' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:628$1715'.
+  created $adff cell `$procdff$3318' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_dest_bin' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:610$1709'.
+  created $adff cell `$procdff$3319' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_mov' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:595$1708'.
+  created $adff cell `$procdff$3320' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_jmp_bin' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:562$1705'.
+  created $adff cell `$procdff$3321' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_so' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:539$1704'.
+  created $adff cell `$procdff$3322' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_type' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:514$1701'.
+  created $adff cell `$procdff$3323' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_dext' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:475$1686'.
+  created $adff cell `$procdff$3324' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_sext' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:448$1679'.
+  created $adff cell `$procdff$3325' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\pmem_busy' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:406$1653'.
+  created $adff cell `$procdff$3326' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\pc' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:400$1652'.
+  created $adff cell `$procdff$3327' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\irq_num' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+  created $adff cell `$procdff$3328' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.$result' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+  created $adff cell `$procdff$3329' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.irq_all' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+  created $adff cell `$procdff$3330' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\get_irq_num$func$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:332$1345.ii' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+  created $adff cell `$procdff$3331' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\inst_irq_rst' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:294$1432'.
+  created $adff cell `$procdff$3332' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\dbg_halt_st' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:279$1429'.
+  created $adff cell `$procdff$3333' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_frontend.\i_state' using process `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:268$1414'.
+  created $adff cell `$procdff$3334' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_execution_unit.\mdb_in_buf' using process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:407$1342'.
+  created $adff cell `$procdff$3335' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_execution_unit.\mdb_in_buf_valid' using process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:392$1340'.
+  created $adff cell `$procdff$3336' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_execution_unit.\mdb_in_buf_en' using process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:387$1338'.
+  created $adff cell `$procdff$3337' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_execution_unit.\mab_lsb' using process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:378$1334'.
+  created $adff cell `$procdff$3338' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_execution_unit.\mdb_out_nxt' using process `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:364$1324'.
+  created $adff cell `$procdff$3339' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\dbg_bw' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:279$1103'.
+  created $adff cell `$procdff$3340' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\dbg_addr' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:274$1102'.
+  created $adff cell `$procdff$3341' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\dbg_uart_txd' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:264$1100'.
+  created $adff cell `$procdff$3342' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\xfer_buf' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:254$1099'.
+  created $adff cell `$procdff$3343' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\xfer_cnt' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:243$1094'.
+  created $adff cell `$procdff$3344' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\xfer_bit' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:237$1091'.
+  created $adff cell `$procdff$3345' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\sync_cnt' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:213$1073'.
+  created $adff cell `$procdff$3346' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\sync_busy' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:203$1065'.
+  created $adff cell `$procdff$3347' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\uart_state' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:184$1051'.
+  created $adff cell `$procdff$3348' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\rxd_maj' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:128$1029'.
+  created $adff cell `$procdff$3349' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg_uart.\rxd_buf' using process `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:116$1023'.
+  created $adff cell `$procdff$3350' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_sync_reset.\data_sync' using process `\omsp_sync_reset.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_reset.v:70$2296'.
+  created $adff cell `$procdff$3351' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\dbg_mem_rd_dly' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:784$755'.
+  created $adff cell `$procdff$3352' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_state' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:755$728'.
+  created $adff cell `$procdff$3353' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_startb' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:722$715'.
+  created $adff cell `$procdff$3354' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_burst' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:711$711'.
+  created $adff cell `$procdff$3355' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\halt_flag' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:692$701'.
+  created $adff cell `$procdff$3356' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\inc_step' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:675$692'.
+  created $adff cell `$procdff$3357' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\dbg_rd_rdy' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:642$681'.
+  created $adff cell `$procdff$3358' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_cnt' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:446$658'.
+  created $adff cell `$procdff$3359' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_addr' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:433$651'.
+  created $adff cell `$procdff$3360' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_data' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:414$635'.
+  created $adff cell `$procdff$3361' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_start' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:396$630'.
+  created $adff cell `$procdff$3362' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\mem_ctl' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:389$629'.
+  created $adff cell `$procdff$3363' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\cpu_stat' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:354$625'.
+  created $adff cell `$procdff$3364' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_dbg.\cpu_ctl' using process `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:328$616'.
+  created $adff cell `$procdff$3365' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_sync_cell.\data_sync' using process `\omsp_sync_cell.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_cell.v:72$2295'.
+  created $adff cell `$procdff$3366' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\dbg_rst_noscan' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:980$584'.
+  created $adff cell `$procdff$3367' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\smclk_div' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:881$578'.
+  created $adff cell `$procdff$3368' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\smclk_en' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:877$576'.
+  created $adff cell `$procdff$3369' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\aclk_en' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:732$562'.
+  created $adff cell `$procdff$3370' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\aclk_div' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:728$558'.
+  created $adff cell `$procdff$3371' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\lfxt_clk_dly' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:474$541'.
+  created $adff cell `$procdff$3372' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\bcsctl2' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:244$531'.
+  created $adff cell `$procdff$3373' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_clock_module.\bcsctl1' using process `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:207$529'.
+  created $adff cell `$procdff$3374' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_sfr.\nmi_dly' using process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:343$2291'.
+  created $adff cell `$procdff$3375' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_sfr.\nmiifg' using process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:202$2275'.
+  created $adff cell `$procdff$3376' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_sfr.\wdtie' using process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:182$2274'.
+  created $adff cell `$procdff$3377' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_sfr.\nmie' using process `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:172$2273'.
+  created $adff cell `$procdff$3378' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_watchdog.\wdt_reset' using process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:543$2333'.
+  created $adff cell `$procdff$3379' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_watchdog.\wdtifg' using process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:527$2330'.
+  created $adff cell `$procdff$3380' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_watchdog.\wdtcnt' using process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:495$2323'.
+  created $adff cell `$procdff$3381' with positive edge clock and positive level reset.
+Creating register for signal `\omsp_watchdog.\wdtctl' using process `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:191$2309'.
+  created $adff cell `$procdff$3382' with positive edge clock and positive level reset.
+
+26.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+26.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+Removing empty process `omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$497'.
+Found and cleaned up 1 empty switch in `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+Removing empty process `omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$485'.
+Found and cleaned up 1 empty switch in `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+Removing empty process `omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$473'.
+Found and cleaned up 1 empty switch in `\omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+Removing empty process `omsp_alu.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_alu.v:0$461'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:564$2185'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:564$2185'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:540$2182'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:540$2182'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:516$2179'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:516$2179'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:492$2176'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:492$2176'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:468$2173'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:468$2173'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:444$2170'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:444$2170'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:420$2167'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:420$2167'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:396$2164'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:396$2164'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:372$2161'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:372$2161'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:348$2158'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:348$2158'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:324$2155'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:324$2155'.
+Found and cleaned up 2 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:300$2152'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:300$2152'.
+Found and cleaned up 1 empty switch in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:272$2149'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:272$2149'.
+Found and cleaned up 1 empty switch in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:242$2143'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:242$2143'.
+Found and cleaned up 3 empty switches in `\omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:161$2124'.
+Removing empty process `omsp_register_file.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_register_file.v:161$2124'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:380$2103'.
+Found and cleaned up 1 empty switch in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:322$2099'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:322$2099'.
+Found and cleaned up 1 empty switch in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:311$2097'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:311$2097'.
+Found and cleaned up 2 empty switches in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:271$2083'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:271$2083'.
+Found and cleaned up 3 empty switches in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:252$2081'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:252$2081'.
+Found and cleaned up 3 empty switches in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:223$2079'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:223$2079'.
+Found and cleaned up 1 empty switch in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:196$2078'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:196$2078'.
+Found and cleaned up 1 empty switch in `\omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:171$2077'.
+Removing empty process `omsp_multiplier.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_multiplier.v:171$2077'.
+Removing empty process `omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:257$2037'.
+Removing empty process `omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:243$2033'.
+Found and cleaned up 2 empty switches in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:230$2031'.
+Removing empty process `omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:230$2031'.
+Found and cleaned up 1 empty switch in `\omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:220$2030'.
+Removing empty process `omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:220$2030'.
+Removing empty process `omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:204$2022'.
+Removing empty process `omsp_mem_backbone.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_mem_backbone.v:193$2021'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1953'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1937'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1921'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1905'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1889'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1873'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1857'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:0$1841'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:974$1840'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:974$1840'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:887$1803'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:853$1793'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:853$1793'.
+Found and cleaned up 2 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:834$1780'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:834$1780'.
+Found and cleaned up 2 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:828$1774'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:828$1774'.
+Found and cleaned up 2 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:822$1771'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:822$1771'.
+Found and cleaned up 2 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:816$1768'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:816$1768'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:786$1748'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:786$1748'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:779$1733'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:779$1733'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:764$1732'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:764$1732'.
+Found and cleaned up 6 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:742$1728'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:742$1728'.
+Found and cleaned up 6 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:716$1727'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:716$1727'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:701$1726'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:701$1726'.
+Found and cleaned up 8 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:665$1721'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:665$1721'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:628$1715'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:628$1715'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:610$1709'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:610$1709'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:595$1708'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:595$1708'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:562$1705'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:562$1705'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:539$1704'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:539$1704'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:514$1701'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:514$1701'.
+Found and cleaned up 2 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:475$1686'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:475$1686'.
+Found and cleaned up 3 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:448$1679'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:448$1679'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:406$1653'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:400$1652'.
+Found and cleaned up 64 empty switches in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:325$1445'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:294$1432'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:294$1432'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:279$1429'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:268$1414'.
+Found and cleaned up 1 empty switch in `\omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:246$1388'.
+Removing empty process `omsp_frontend.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_frontend.v:246$1388'.
+Found and cleaned up 1 empty switch in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:407$1342'.
+Removing empty process `omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:407$1342'.
+Found and cleaned up 2 empty switches in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:392$1340'.
+Removing empty process `omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:392$1340'.
+Removing empty process `omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:387$1338'.
+Found and cleaned up 1 empty switch in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:378$1334'.
+Removing empty process `omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:378$1334'.
+Found and cleaned up 2 empty switches in `\omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:364$1324'.
+Removing empty process `omsp_execution_unit.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_execution_unit.v:364$1324'.
+Found and cleaned up 1 empty switch in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:279$1103'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:279$1103'.
+Found and cleaned up 1 empty switch in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:274$1102'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:274$1102'.
+Found and cleaned up 1 empty switch in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:264$1100'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:264$1100'.
+Found and cleaned up 2 empty switches in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:254$1099'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:254$1099'.
+Found and cleaned up 3 empty switches in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:243$1094'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:243$1094'.
+Found and cleaned up 3 empty switches in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:237$1091'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:237$1091'.
+Found and cleaned up 1 empty switch in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:213$1073'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:213$1073'.
+Found and cleaned up 2 empty switches in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:203$1065'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:203$1065'.
+Found and cleaned up 1 empty switch in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:184$1051'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:184$1051'.
+Found and cleaned up 1 empty switch in `\omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:160$1035'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:160$1035'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:128$1029'.
+Removing empty process `omsp_dbg_uart.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg_uart.v:116$1023'.
+Removing empty process `omsp_sync_reset.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_reset.v:70$2296'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:784$755'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:755$728'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:742$723'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:742$723'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:722$715'.
+Found and cleaned up 2 empty switches in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:711$711'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:711$711'.
+Found and cleaned up 2 empty switches in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:692$701'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:692$701'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:675$692'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:675$692'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:642$681'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:642$681'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:446$658'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:446$658'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:433$651'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:433$651'.
+Found and cleaned up 3 empty switches in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:414$635'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:414$635'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:396$630'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:389$629'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:389$629'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:354$625'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:354$625'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:328$616'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:328$616'.
+Found and cleaned up 1 empty switch in `\omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:240$613'.
+Removing empty process `omsp_dbg.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_dbg.v:240$613'.
+Removing empty process `omsp_sync_cell.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sync_cell.v:72$2295'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:980$584'.
+Found and cleaned up 1 empty switch in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:881$578'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:881$578'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:877$576'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:732$562'.
+Found and cleaned up 1 empty switch in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:728$558'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:728$558'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:474$541'.
+Found and cleaned up 1 empty switch in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:244$531'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:244$531'.
+Found and cleaned up 1 empty switch in `\omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:207$529'.
+Removing empty process `omsp_clock_module.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_clock_module.v:207$529'.
+Removing empty process `omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:343$2291'.
+Found and cleaned up 2 empty switches in `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:202$2275'.
+Removing empty process `omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:202$2275'.
+Found and cleaned up 1 empty switch in `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:182$2274'.
+Removing empty process `omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:182$2274'.
+Found and cleaned up 2 empty switches in `\omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:172$2273'.
+Removing empty process `omsp_sfr.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_sfr.v:172$2273'.
+Removing empty process `omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:543$2333'.
+Found and cleaned up 2 empty switches in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:527$2330'.
+Removing empty process `omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:527$2330'.
+Found and cleaned up 1 empty switch in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:505$2324'.
+Removing empty process `omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:505$2324'.
+Found and cleaned up 2 empty switches in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:495$2323'.
+Removing empty process `omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:495$2323'.
+Found and cleaned up 1 empty switch in `\omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:191$2309'.
+Removing empty process `omsp_watchdog.$proc$RTL/opencores-ip/core/rtl/verilog//omsp_watchdog.v:191$2309'.
+Cleaned up 212 empty switches.
+
+26.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module omsp_alu.
+<suppressed ~2 debug messages>
+Optimizing module omsp_register_file.
+<suppressed ~9 debug messages>
+Optimizing module omsp_multiplier.
+<suppressed ~9 debug messages>
+Optimizing module omsp_mem_backbone.
+<suppressed ~9 debug messages>
+Optimizing module omsp_frontend.
+<suppressed ~35 debug messages>
+Optimizing module omsp_execution_unit.
+<suppressed ~5 debug messages>
+Optimizing module omsp_dbg_uart.
+<suppressed ~7 debug messages>
+Optimizing module openMSP430.
+Optimizing module omsp_sync_reset.
+Optimizing module omsp_dbg.
+<suppressed ~20 debug messages>
+Optimizing module omsp_sync_cell.
+Optimizing module omsp_clock_module.
+<suppressed ~19 debug messages>
+Optimizing module omsp_sfr.
+<suppressed ~11 debug messages>
+Optimizing module omsp_watchdog.
+<suppressed ~5 debug messages>
+
+27. Executing FLATTEN pass (flatten design).
+Deleting now unused module omsp_alu.
+Deleting now unused module omsp_register_file.
+Deleting now unused module omsp_multiplier.
+Deleting now unused module omsp_mem_backbone.
+Deleting now unused module omsp_frontend.
+Deleting now unused module omsp_execution_unit.
+Deleting now unused module omsp_dbg_uart.
+Deleting now unused module omsp_sync_reset.
+Deleting now unused module omsp_dbg.
+Deleting now unused module omsp_sync_cell.
+Deleting now unused module omsp_clock_module.
+Deleting now unused module omsp_sfr.
+Deleting now unused module omsp_watchdog.
+<suppressed ~16 debug messages>
+
+28. Executing MEMORY pass.
+
+28.1. Executing OPT_MEM pass (optimize memories).
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 8
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 9
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 10
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 11
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 12
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 13
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 14
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 15
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 16
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 17
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 18
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 19
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 20
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 21
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 22
+openMSP430.$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342: removing const-0 lane 23
+Performed a total of 1 transformations.
+
+28.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+28.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+28.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+28.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342'[0] in module `\openMSP430': no output FF found.
+Checking read port address `$flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342'[0] in module `\openMSP430': no address FF found.
+
+28.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \openMSP430..
+Removed 49 unused cells and 1085 unused wires.
+<suppressed ~55 debug messages>
+
+28.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+28.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+28.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \openMSP430..
+
+28.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+28.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory $flatten\dbg_0.$auto$proc_rom.cc:150:do_switch$2342 in module \openMSP430:
+  created 32 $dff cells and 0 static cells of width 9.
+  read interface: 0 $dff and 31 $mux cells.
+  write interface: 0 write mux blocks.
+
+29. Executing TECHMAP pass (map to technology primitives).
+
+29.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+29.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $logic_not.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=3:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=3:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=3:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$57f63e8a3282e053be0430389b09fa050ac7dca0\_90_pmux for cells of type $pmux.
+Using template $paramod$22d60a7641dca782b2290912c8e26f3c8b9c52b2\_90_pmux for cells of type $pmux.
+Using template $paramod$ebea5ef670e0e7c1660cff40df64ca6f958ad18d\_90_pmux for cells of type $pmux.
+Using template $paramod$constmap:d7801926ab4ecd2bd3570493cb586bab22bf12ac$paramod$73504d2b3189e7a53a61f736fd84dc03bdfe7985\_90_shift_shiftx for cells of type $shift.
+Running "alumacc" on wrapper $extern:wrap:$neg:A_SIGNED=1:A_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$neg:A_SIGNED=1:A_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$neg:A_SIGNED=1:A_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$constmap:53f81d327ce76cbf6a8a98434119a90a4847620f$paramod$21dee603dc19e4530a14795556c80eafcc4f26b8\_90_shift_shiftx for cells of type $shift.
+Using template $paramod$constmap:f52aa59ca6da12f4c8565d58407b91b3ad79111f$paramod$27d04c6feb79dd2a441a06a98036129e1759bcbd\_90_shift_shiftx for cells of type $shift.
+Using extmapper simplemap for cells of type $logic_or.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=2:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=2:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=2:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=16:B_SIGNED=0:B_WIDTH=16:Y_WIDTH=16:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=16:B_SIGNED=0:B_WIDTH=16:Y_WIDTH=16:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=16:B_SIGNED=0:B_WIDTH=16:Y_WIDTH=16:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $xor.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=17:B_SIGNED=0:B_WIDTH=17:Y_WIDTH=17:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=17:B_SIGNED=0:B_WIDTH=17:Y_WIDTH=17:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=17:B_SIGNED=0:B_WIDTH=17:Y_WIDTH=17:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=5:B_SIGNED=0:B_WIDTH=5:Y_WIDTH=5:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=5:B_SIGNED=0:B_WIDTH=5:Y_WIDTH=5:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=5:B_SIGNED=0:B_WIDTH=5:Y_WIDTH=5:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$lt:A_SIGNED=0:A_WIDTH=5:B_SIGNED=0:B_WIDTH=5:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$lt:A_SIGNED=0:A_WIDTH=5:B_SIGNED=0:B_WIDTH=5:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$lt:A_SIGNED=0:A_WIDTH=5:B_SIGNED=0:B_WIDTH=5:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$lt:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$lt:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$lt:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=15:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$d629d85c8826a74239b9178d1930215a43b0ceb0\_90_pmux for cells of type $pmux.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=33:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=33:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=33:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=9:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=9:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=9:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=19:B_SIGNED=0:B_WIDTH=19:Y_WIDTH=19:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=19:B_SIGNED=0:B_WIDTH=19:Y_WIDTH=19:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=19:B_SIGNED=0:B_WIDTH=19:Y_WIDTH=19:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=4:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=4:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=4:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$56f7ce6d87f8add68ca646dc02d7695a3189f8e5\_90_pmux for cells of type $pmux.
+Using template $paramod$068ad458e7761d78e5eed8238508872e7b0aef95\_90_pmux for cells of type $pmux.
+Using template $paramod$b18e16801adf491a64caa0542270798e5d4ac6b6\_90_alu for cells of type $alu.
+Using template $paramod$7e708ae28ab761f11d0fb59d3ffc72f6a4baf5d9\_90_alu for cells of type $alu.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\_90_alu for cells of type $alu.
+Using template $paramod$c6baa65225090ac0a120feab1b920965244aa496\_90_alu for cells of type $alu.
+Using template $paramod$6df0329addda9228fcc2546de2aaf14ad26c98e1\_90_alu for cells of type $alu.
+Using template $paramod$3bb72ad0665cdca279bbc49ed6a39f403f16497f\_90_alu for cells of type $alu.
+Using template $paramod$78e969f2586efcf3a5b0b0440bcca0db83d5cca2\_90_alu for cells of type $alu.
+Using template $paramod$67570b4127ce7524f360108b2bcb408862bad8c6\_90_alu for cells of type $alu.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using template $paramod$cc6a978c1b57cdb49efcec348c88d8e28bf1a01f\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc.
+  add { \multiplier_0.op1_xp [16] \multiplier_0.op1 } * \multiplier_0.op2_xp (17x9 bits, signed)
+Using template $paramod$4e6ee5eb737cf7428f8e246e911ae1dac9ae2979\_90_alu for cells of type $alu.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000010001 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011010 for cells of type $fa.
+Using template $paramod$7af98a8d3d01ff58dee4212ab52569c379e064a1\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000010011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000011010 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~10953 debug messages>
+
+30. Executing ABC pass (technology mapping using ABC).
+
+30.1. Extracting gate netlist of module `\openMSP430' to `<abc-temp-dir>/input.blif'..
+Replacing 955 occurrences of constant undef bits with constant zero bits
+Extracted 26957 gates and 27734 wires to a netlist network with 774 inputs and 799 outputs.
+
+30.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+30.1.2. Re-integrating ABC results.
+ABC RESULTS:              XNOR cells:      197
+ABC RESULTS:               NOT cells:      383
+ABC RESULTS:               XOR cells:      531
+ABC RESULTS:               AND cells:      179
+ABC RESULTS:               NOR cells:      418
+ABC RESULTS:             ORNOT cells:      259
+ABC RESULTS:              NAND cells:      175
+ABC RESULTS:               MUX cells:     1593
+ABC RESULTS:            ANDNOT cells:     2656
+ABC RESULTS:                OR cells:     1406
+ABC RESULTS:              ZERO cells:        8
+ABC RESULTS:        internal signals:    26161
+ABC RESULTS:           input signals:      774
+ABC RESULTS:          output signals:      799
+Removing temp directory.
+
+31. Executing MEMORY pass.
+
+31.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+31.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+31.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+31.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+31.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+31.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \openMSP430..
+Removed 12 unused cells and 10968 unused wires.
+<suppressed ~386 debug messages>
+
+31.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+31.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+31.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \openMSP430..
+
+31.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+31.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+32. Generating Graphviz representation of design.
+Writing dot description to `./graphs/openMSP430/openMSP430_ORIGINAL_2024-01-30-07-48-09/openMSP430_ORIGINAL.dot'.
+Dumping module openMSP430 to page 1.
+
+End of script. Logfile hash: c7a8d7ebe1, CPU: user 4.88s system 0.09s, MEM: 131.18 MB peak
+Yosys 0.35+24 (git sha1 032fab1f5, clang 15.0.7 -fPIC -Os)
+Time spent: 26% 1x abc (1 sec), 18% 2x read_liberty (1 sec), ...
