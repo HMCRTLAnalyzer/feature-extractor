@@ -1,8 +1,10 @@
-# entire starter code gratefully borrowed from : https://machinelearningmastery.com/develop-first-xgboost-model-python-scikit-learn/
+# starter code gratefully borrowed from : https://machinelearningmastery.com/develop-first-xgboost-model-python-scikit-learn/
 
 from numpy import loadtxt
 import numpy as np
 from xgboost import XGBClassifier
+import xgboost
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
@@ -25,3 +27,9 @@ predictions = [round(value) for value in y_pred]
 # evaluate predictions
 accuracy = accuracy_score(y_test, predictions)
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
+
+#save images
+a = xgboost.plot_tree(model, num_trees = 1)
+plt.savefig("xbg_tree.png", dpi = 600)
+b = xgboost.plot_importance(model, max_num_features=20)
+plt.savefig("xbg_importance.png", dpi = 600)

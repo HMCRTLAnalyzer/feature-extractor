@@ -18,7 +18,7 @@ split = [0.9, 0.1]
 n_features_in = 1399
 n_hidden = 2100
 my_learning_rate = 0.001
-epochs = 1001
+epochs = 101
 
 class CustomDataset(Dataset):
     def __init__(self, data_file, transform=None, target_transform=None):
@@ -134,8 +134,8 @@ def model_train(model, trainingloader, testingloader):
     return (acc_arr, test_acc_arr)
 
 print("Starting testing:")
-#tr_array = np.arange(0.0002, 0.001, 0.0002)
-tr_array = [my_learning_rate]
+tr_array = np.arange(0.0000, 0.0011, 0.0002)
+#tr_array = [my_learning_rate]
 train = []
 test = []
 for tr in tr_array:
@@ -165,11 +165,10 @@ for tr in tr_array:
     (train_acc, test_acc) = model_train(model, trainingloader, testingloader)
     plt.plot(train_acc, label = "training, tr = " + str(tr))
     #plt.plot(test_acc, label = 'testing, tr = ' + str(tr))
-    plt.legend()
+    plt.legend(bbox_to_anchor = (1.05, 0), loc = "bottom right")
     plt.xlabel("Epoch")
     plt.ylabel("Accuracy")
-    titlestring = "1000 epochs new crunching"
+    titlestring = "Learning_rate_sweep"
     plt.title(titlestring)
-    plt.savefig("/home/esundheim/feature-extractor/pretty_pictures/" + titlestring + ".png")
+    plt.savefig("/home/esundheim/feature-extractor/pretty_pictures/" + titlestring + ".png", bbox_inches = 'tight', dpi = 600)
   
-#to do: use plt.savefig, put into sep folder (on tera), vs code can display images
