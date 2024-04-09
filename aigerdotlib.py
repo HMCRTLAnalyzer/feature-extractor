@@ -387,8 +387,8 @@ def getLongestLengthAllPaths(graph, input_names, output_names):
 
 def topNLargestLE(graph_dict, N):
     """
-        Takes in a graph dictionary of entries containing a graph, list of inputs, a list of outputs and returns the top N paths
-
+        Takes in a graph dictionary of entries containing a graph, list of inputs, a list of outputs and returns the top N Logical Efforts
+        as well as a list of Logical Efforts normalized by the graph's node count.
         If N = 0, return entire list
 
         If N < 0, function breaks.
@@ -396,24 +396,30 @@ def topNLargestLE(graph_dict, N):
     start = time.time()
 
     list_of_LEs = []
+    list_of_LE_norm = []
     for keys, entry in graph_dict.items():
         graph = entry["graph"]
         input_names = entry["inputs"]
         output_names = entry["outputs"]
-        list_of_LEs += getLongestLengthAllPaths(graph, input_names, output_names)
+        NC = graph.order()
+        graph_LEs = getLongestLengthAllPaths(graph, input_names, output_names)
+        list_of_LEs += graph_LEs
+        list_of_LE_norm += [x/NC for x in graph_LEs]
     list_of_LEs.sort(reverse=True)
     if N != 0:
         if len(list_of_LEs) >= N:
             largest_LE = list_of_LEs[0:N]
+            list_of_LE_norm = list_of_LE_norm[0:N]
         else:
             largest_LE = list_of_LEs + [0]*(N-len(list_of_LEs))
+            largest_LE_norm = list_of_LE_norm + [0]*(N-len(list_of_LE_norm))
     else:
         return list_of_LEs
     
     end = time.time()
     logger.info(f"Took {end - start}s to calculate Logical Effort Stats")
     
-    return largest_LE
+    return largest_LE, largest_LE_norm
 
 def topNCLBNodeCount(graph_dict,N):
     """
@@ -483,4 +489,34 @@ def topNFanouts(graph_dict,N):
 
     return list_of_fanouts
 
+def topNLE_NodeCountNormalized(graph_dict,N):
+    """
+        Takes in a graph dictionary of entries containing a graph, list of inputs, a list of outputs and returns the top N paths
 
+        If N = 0, return entire list
+
+        If N < 0, function breaks.
+    """
+    start = time.time()
+
+    list_of_LE_norm = []
+    for keys, entry in graph_dict.items():
+        graph = entry["graph"]
+        input_names = entry["inputs"]
+        output_names = entry["outputs"]
+        NC = graph.order()
+        list_of_LEs = getLongestLengthAllPaths(graph, input_names, output_names)
+        list_of_LE_norm += [x/NC for x in list_of_LEs]
+    list_of_LEs.sort(reverse=True)
+    if N != 0:
+        if len(list_of_LEs) >= N:
+            largest_LE = list_of_LE_norm[0:N]
+        else:
+            largest_LE = list_of_LE_norm + [0]*(N-len(list_of_LE_norm))
+    else:
+        return list_of_LEs
+    
+    end = time.time()
+    logger.info(f"Took {end - start}s to calculate Logical Effort over Node Count")
+    
+    return largest_LE

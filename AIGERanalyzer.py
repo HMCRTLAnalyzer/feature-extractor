@@ -11,17 +11,18 @@ import logging
 import time
 
 N = 350
-csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
-csv_out_filepath = f"processed_data/top{N}_MLdata.csv"
-csv_temp_filepath = f"processed_data/temp_top{N}.csv"
-# csv_in_filepath = "bruh2.csv"
-# csv_out_filepath = "Robstats.csv"
+# csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
+# csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata.csv"
+# csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm.csv"
+csv_in_filepath = "diffs_test_paths.csv"
+csv_out_filepath = "processed_data/normLE_test.csv"
+csv_temp_filepath = "processed_data/normLE_test_tmp.csv"
 curr_time = time.strftime("%Y-%d_%H%M")
 logfile = f"logs/run_{curr_time}.log"
 pickle_dirpath = "./graph_pickles"
 regenerate_pickles = 0
 openABCD_df = pd.read_csv(csv_in_filepath)
-openABCD_df = openABCD_df.loc[:,["module","path_to_rtl","language","sensitive","memory"]]
+openABCD_df = openABCD_df.loc[:,["module","path_to_rtl","language","sensitive","memory","percent_diff_delay","percent_diff_area"]]
 print(openABCD_df)
 
 # Define Parameters for dataframe and analysis
@@ -34,8 +35,9 @@ ld_cols = [f"LD{x}" for x in nlist]
 le_cols = [f"LE{x}" for x in nlist]
 nodecnt_cols = [f"NCNT{x}" for x in nlist]
 fanout_cols = [f"FO{x}" for x in nlist]
+lenorm_cols = [f"LEnorm{x}" for x in nlist]
 
-stats_col = ["module","sensitive","memory"]+ld_cols+le_cols+nodecnt_cols+fanout_cols
+stats_col = ["module","delay_delta","area_delta","sensitive","memory",]+ld_cols+le_cols+lenorm_cols+nodecnt_cols+fanout_cols
 df_list = []
 
 graph_dict = {}
@@ -54,6 +56,8 @@ for row in openABCD_df.itertuples(index=False):
     language = row[2]
     sensitive = row[3]
     memory = row[4]
+    delay_delta = row[5]
+    area_delta = row[6]
     graph_filepath = f"{pickle_dirpath}/{module}_graphs.pickle"
     
     # Check if pickle exists. if it does, load the pickle instead of regenerating graph list.
@@ -94,13 +98,13 @@ for row in openABCD_df.itertuples(index=False):
     logger.debug(graph_dict)
     logger.info(f"Analyzing {module}")
     LD = topNLargestLD(graph_dict,N)
-    LE = topNLargestLE(graph_dict,N)
+    LE, LE_norm = topNLargestLE(graph_dict,N)
     LNC = topNCLBNodeCount(graph_dict,N)
     FN = topNFanouts(graph_dict,N)
     vals = [module, sensitive, memory]+LD+LE+LNC+FN
 
     logger.info(f"Writing saved stats to existing temp csv file")
-    data_line = [module]+[sensitive]+[memory]+LD+LE+LNC+FN
+    data_line = [module]+[delay_delta]+[area_delta]+[sensitive]+[memory]+LD+LE+LE_norm+LNC+FN
     data_out = ",".join(map(str, [str(x) for x in data_line]))
     os.system(f"echo {data_line} >> {csv_temp_filepath}")
 
