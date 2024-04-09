@@ -11,12 +11,9 @@ import logging
 import time
 
 N = 350
-# csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
-# csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata.csv"
-# csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm.csv"
-csv_in_filepath = "diffs_test_paths.csv"
-csv_out_filepath = "processed_data/normLE_test.csv"
-csv_temp_filepath = "processed_data/normLE_test_tmp.csv"
+csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
+csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata.csv"
+csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm.csv"
 curr_time = time.strftime("%Y-%d_%H%M")
 logfile = f"logs/run_{curr_time}.log"
 pickle_dirpath = "./graph_pickles"
