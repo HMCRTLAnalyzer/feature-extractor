@@ -10,10 +10,13 @@ import argparse
 import logging
 import time
 
-N = 350
-csv_in_filepath = "/home/qualcomm_clinic/RTL_dataset/training_data.csv"
+N = 500
+csv_in_filepath = "input_csvs/training_data_files_diffs_mem.csv"
 csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata.csv"
 csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm.csv"
+#csv_in_filepath = "diffs_test_paths.csv"
+#csv_out_filepath = "test.csv"
+#csv_temp_filepath = "temp.csv"
 curr_time = time.strftime("%Y-%d_%H%M")
 logfile = f"logs/run_{curr_time}.log"
 pickle_dirpath = "./graph_pickles"
@@ -45,7 +48,7 @@ data_out = ",".join(map(str, stats_col))
 os.system(f"echo {data_out} > {csv_temp_filepath}")
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename=logfile,level=logging.DEBUG)
+logging.basicConfig(filename=logfile,level=logging.INFO)
 
 for row in openABCD_df.itertuples(index=False):
     module = row[0]
@@ -94,8 +97,8 @@ for row in openABCD_df.itertuples(index=False):
         pass
     logger.debug(graph_dict)
     logger.info(f"Analyzing {module}")
-    LD = topNLargestLD(graph_dict,N)
-    LE, LE_norm = topNLargestLE(graph_dict,N)
+    # LD = topNLargestLD(graph_dict,N)
+    LE, LE_norm, LD = topNLargestLEandLD(graph_dict,N)
     LNC = topNCLBNodeCount(graph_dict,N)
     FN = topNFanouts(graph_dict,N)
     vals = [module, sensitive, memory]+LD+LE+LNC+FN

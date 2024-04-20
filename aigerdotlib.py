@@ -385,7 +385,7 @@ def getLongestLengthAllPaths(graph, input_names, output_names):
     return LE_path_lengths
 
 
-def topNLargestLE(graph_dict, N):
+def topNLargestLEandLD(graph_dict, N):
     """
         Takes in a graph dictionary of entries containing a graph, list of inputs, a list of outputs and returns the top N Logical Efforts
         as well as a list of Logical Efforts normalized by the graph's node count.
@@ -395,6 +395,7 @@ def topNLargestLE(graph_dict, N):
     """
     start = time.time()
 
+    list_of_LDs = []
     list_of_LEs = []
     list_of_LE_norm = []
     for keys, entry in graph_dict.items():
@@ -402,24 +403,27 @@ def topNLargestLE(graph_dict, N):
         input_names = entry["inputs"]
         output_names = entry["outputs"]
         NC = graph.order()
+        list_of_LDs += getLogicalDepthAllPaths(graph, input_names, output_names)
         graph_LEs = getLongestLengthAllPaths(graph, input_names, output_names)
         list_of_LEs += graph_LEs
         list_of_LE_norm += [x/NC for x in graph_LEs]
     list_of_LEs.sort(reverse=True)
     if N != 0:
         if len(list_of_LEs) >= N:
+            largest_LD = list_of_LDs[0:N]
             largest_LE = list_of_LEs[0:N]
-            list_of_LE_norm = list_of_LE_norm[0:N]
+            largest_LE_norm = list_of_LE_norm[0:N]
         else:
+            largest_LD = list_of_LDs + [0]*(N-len(list_of_LDs))
             largest_LE = list_of_LEs + [0]*(N-len(list_of_LEs))
             largest_LE_norm = list_of_LE_norm + [0]*(N-len(list_of_LE_norm))
     else:
-        return list_of_LEs
+        return list_of_LEs, list_of_LE_norm, list_of_LDs
     
     end = time.time()
     logger.info(f"Took {end - start}s to calculate Logical Effort Stats")
     
-    return largest_LE, largest_LE_norm
+    return largest_LE, largest_LE_norm, largest_LD
 
 def topNCLBNodeCount(graph_dict,N):
     """
