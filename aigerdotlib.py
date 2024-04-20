@@ -408,6 +408,8 @@ def topNLargestLEandLD(graph_dict, N):
         list_of_LEs += graph_LEs
         list_of_LE_norm += [x/NC for x in graph_LEs]
     list_of_LEs.sort(reverse=True)
+    list_of_LDs.sort(reverse=True)
+    list_of_LE_norm.sort(reverse=True)
     if N != 0:
         if len(list_of_LEs) >= N:
             largest_LD = list_of_LDs[0:N]
