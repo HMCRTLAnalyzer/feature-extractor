@@ -10,20 +10,21 @@ import argparse
 import logging
 import time
 
+starttime = time.time()
+
 N = 500
-csv_in_filepath = "input_csvs/training_data_files_diffs_mem.csv"
-csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata_fixed.csv"
-csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm_fixed.csv"
-#csv_in_filepath = "diffs_test_paths.csv"
+csv_in_filepath = "input_csv/training_data_files_diffs_mem.csv"
+csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata_test.csv"
+csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm_test.csv"
+# csv_in_filepath = "input_csv/diffs_test_paths.csv"
 #csv_out_filepath = "test.csv"
 #csv_temp_filepath = "temp.csv"
 curr_time = time.strftime("%Y-%d_%H%M")
 logfile = f"logs/run_{curr_time}.log"
 pickle_dirpath = "./graph_pickles"
-regenerate_pickles = 0
+regenerate_pickles = 1
 openABCD_df = pd.read_csv(csv_in_filepath)
 openABCD_df = openABCD_df.loc[:,["module","path_to_rtl","language","sensitive","memory","percent_diff_delay","percent_diff_area"]]
-print(openABCD_df)
 
 # Define Parameters for dataframe and analysis
 IO_basenames = ["I","O","L"]
@@ -114,3 +115,10 @@ for row in openABCD_df.itertuples(index=False):
 logger.info(f"Wrote dataset csv to {csv_out_filepath}")
 stats_df = pd.DataFrame(data=df_list)
 stats_df.to_csv(csv_out_filepath)
+
+# Log time taken to generate stats from dataset
+endtime = time.time()
+time_to_make = endtime-starttime
+hours, rem = divmod(endtime-starttime, 3600)
+minutes, seconds = divmod(rem, 60)
+logger.info(f"Dataset took "+"{:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds)+" to generate dataset from {csv_in_filepath}. Exiting!")
