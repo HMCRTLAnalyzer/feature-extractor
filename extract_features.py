@@ -10,6 +10,8 @@ import argparse
 import logging
 import time
 
+starttime = time.time()
+
 parser = argparse.ArgumentParser(
                     prog='Feature Extractor',
                     description='Extracts features for machine learning from RTL projects using NetworkX',
@@ -20,6 +22,7 @@ parser.add_argument('csv_in',help='The CSV file containing the inputs')         
 parser.add_argument('csv_out',help='The CSV file containing the outputs')
 parser.add_argument('N',help='Top number of each statistic to take',type=int,default=20)
 parser.add_argument('--logfile',help='Location of logfile',default='/dev/null') # TODO: Get this to not cry on Windows
+parser.add_argument('--regenerate',help='Whether or not to regenerate pickles',default=False,action='store_true') # TODO: Get this to not cry on Windows
 
 args = parser.parse_args()
 
@@ -34,7 +37,7 @@ logging.basicConfig(filename=logfile,level=logging.INFO)
 
 curr_time = time.strftime("%Y-%d_%H%M")
 pickle_dirpath = "./graph_pickles"
-regenerate_pickles = 0
+regenerate_pickles = args.regenerate
 openABCD_df = pd.read_csv(csv_in_filepath)
 openABCD_df = openABCD_df.loc[:,["module","path_to_rtl","language"]]
 
@@ -119,3 +122,10 @@ for row in openABCD_df.itertuples(index=False):
 # After getting all df items, create dataframe and save it to a csv.
 stats_df = pd.DataFrame(data=df_list)
 stats_df.to_csv(csv_out_filepath)
+
+# Log time taken to create features
+endtime = time.time()
+time_to_make = endtime-starttime
+hours, rem = divmod(endtime-starttime, 3600)
+minutes, seconds = divmod(rem, 60)
+print(f"Dataset took "+"{:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds)+" to generate dataset from {csv_in_filepath}. Exiting!")
