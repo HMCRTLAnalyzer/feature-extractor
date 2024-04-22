@@ -102,14 +102,13 @@ for row in openABCD_df.itertuples(index=False):
     LE, LE_norm, LD = topNLargestLEandLD(graph_dict,N)
     LNC = topNCLBNodeCount(graph_dict,N)
     FN = topNFanouts(graph_dict,N)
-    vals = [module, sensitive, memory]+LD+LE+LNC+FN
 
     logger.info(f"Writing saved stats to existing temp csv file")
     data_line = [module]+[delay_delta]+[area_delta]+[sensitive]+[memory]+LD+LE+LE_norm+LNC+FN
     data_out = ",".join(map(str, [str(x) for x in data_line]))
     os.system(f"echo {data_out} >> {csv_temp_filepath}")
 
-    df_list += [dict(zip(stats_col,vals))]
+    df_list += [dict(zip(stats_col,data_line))]
 
 # After getting all df items, create dataframe and save it to a csv.
 logger.info(f"Wrote dataset csv to {csv_out_filepath}")

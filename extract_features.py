@@ -117,7 +117,7 @@ for row in openABCD_df.itertuples(index=False):
     data_out = ",".join(map(str, [str(x) for x in data_line]))
     os.system(f"echo {data_out} >> {csv_temp_filepath}")
 
-    df_list += [dict(zip(stats_col,vals))]
+    df_list += [dict(zip(stats_col,data_line))]
 
 # After getting all df items, create dataframe and save it to a csv.
 stats_df = pd.DataFrame(data=df_list)
