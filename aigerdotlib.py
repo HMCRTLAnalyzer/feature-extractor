@@ -62,20 +62,30 @@ def logicalEffortEdgeMap(graph):
         Input: graph
         Output: modified graph
     """
+    not_para_del = 1
+    nand_para_del = 2
+    not_cap = 3
+    nand_cap = 4
+    not_le = 1
+    nand_le = (4/3)
     for n in graph.nodes():
         add_edge_list = []
         if n[0] not in ["N", "I"]:
-            parasitic_delay = 2
+            parasitic_delay = nand_para_del
+            logical_effort = nand_le
+            in_cap = nand_cap
         else:
-            parasitic_delay = 1
-        effective_fanout = 0
+            parasitic_delay = not_para_del
+            logical_effort = not_le
+            in_cap = not_cap
+        out_cap = 0
         for p in graph.predecessors(n):
-            if p[0] not in ["L","N"]:
-                effective_fanout += (4/3)
+            if p[0] not in ["L","O","N"]:
+                out_cap += nand_cap
             else:
-                effective_fanout += 1
+                out_cap += not_cap
             add_edge_list = [(p, n)]
-        node_delay = parasitic_delay + effective_fanout
+        node_delay = parasitic_delay + logical_effort*(out_cap/in_cap)
         graph.add_edges_from(add_edge_list,weight=node_delay)
 
     return graph
