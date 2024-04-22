@@ -14,8 +14,8 @@ starttime = time.time()
 
 N = 500
 csv_in_filepath = "input_csv/training_data_files_diffs_mem.csv"
-csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata_test.csv"
-csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm_test.csv"
+csv_out_filepath = f"processed_data/top{N}_LEnorm_MLdata.csv"
+csv_temp_filepath = f"processed_data/temp_top{N}_LEnorm.csv"
 # csv_in_filepath = "input_csv/diffs_test_paths.csv"
 #csv_out_filepath = "test.csv"
 #csv_temp_filepath = "temp.csv"
@@ -107,14 +107,14 @@ for row in openABCD_df.itertuples(index=False):
     logger.info(f"Writing saved stats to existing temp csv file")
     data_line = [module]+[delay_delta]+[area_delta]+[sensitive]+[memory]+LD+LE+LE_norm+LNC+FN
     data_out = ",".join(map(str, [str(x) for x in data_line]))
-    os.system(f"echo {data_line} >> {csv_temp_filepath}")
+    os.system(f"echo {data_out} >> {csv_temp_filepath}")
 
     df_list += [dict(zip(stats_col,vals))]
 
 # After getting all df items, create dataframe and save it to a csv.
 logger.info(f"Wrote dataset csv to {csv_out_filepath}")
 stats_df = pd.DataFrame(data=df_list)
-stats_df.to_csv(csv_out_filepath)
+stats_df.to_csv(csv_out_filepath,index=False)
 
 # Log time taken to generate stats from dataset
 endtime = time.time()
