@@ -9,6 +9,9 @@
 # Ignore RTL directory
 /RTL/*
 
+# Ignore pretty pictures aka matplotlib outputs
+/pretty_pictures/*
+
 # Exclude simlink from aigtodot
 aigtodot
 
