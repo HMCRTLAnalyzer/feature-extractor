@@ -1,9 +1,11 @@
+#!/bin/python3
 # starter code gratefully borrowed from : https://machinelearningmastery.com/develop-first-xgboost-model-python-scikit-learn/
 # https://xgboost.readthedocs.io/en/stable/python/sklearn_estimator.html
 
-from numpy import loadtxt
+# from numpy import loadtxt
 import numpy as np
 import xgboost as xgb
+import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from sklearn import metrics
@@ -12,96 +14,78 @@ from sklearn import metrics
 # to do: try training on only non-memories! -diego's suggestion
 # ----------------------------------------
 
-def load_feature_csv_into_npz(file = 'test4_15.csv', clean_file_name = 'clean_data', predict = False):
+def load_dataset_csv(file = 'test4_15.csv', predict=False, drop_mem=False):
     '''
-    Loads output csv from feature extraction into usuable numpy arrays for sklearn/xgboost learning and saves it into a .npz file for quick access
-    Can also process data that we want to make a prediction about
+    Loads output csv from feature extraction into dataframe for sklearn/xgboost learning into X, Y, and name dataframes
     '''
-    # load data as numpy array
+    # load data as pandas dataframe
 
-    if (predict): #all predictions will be made for the 350 columns
-        print("cutting data for predictions")
-        start_of_data = 2
-        name_col = 0
-        sens_col = 0
-        mem_col = 0 #these are just numbers so we're fine, not going to be used anyway
-    elif (file == "test4_15.csv"): #500 columns each, with delta cols
-        print("using new data")
-        start_of_data = 5
-        name_col = 0
-        sens_col = 3
-        mem_col = 4
-    else: #350 cols
-        start_of_data = 3
-        name_col = 0
-        sens_col = 1
-        mem_col = 2
-    #dataset = loadtxt('/home/qualcomm_clinic/RTL_dataset/temp_top350.csv', delimiter=",", skiprows = 1, dtype="str")
-    dataset = loadtxt(file, delimiter=",", skiprows = 0, dtype="str")
+    df = pd.read_csv(file)
+
+    if (drop_mem) and (not predict):
+        df = df[df.memory == 0]
+
+    # read and separate dataframe according to known dataset info column names
+
+    dataset_info_names = ['module', 'delay_delta', 'area_delta', 'memory', 'sensitive'] # Hard coded, maybe turn this into a variable
+
+    try: # Try block for full dataset
+        name_list = list(df.columns.values)
+        # separate dataframe based on whether a column's name is in the list of known dataset info column names
+        dataset_names_list = [x for x in name_list if x in dataset_info_names]
+        feature_names_list = [x for x in name_list if x not in dataset_info_names] 
+        label_data = df[dataset_names_list]
+        feature_data = df[feature_names_list]
+        feature_names = list(feature_data.columns.values) # Cast feature names as numpy array
+    except Exception as e:
+        print(f"Error: Failed to read in Dataframe due to {e}, exiting!")
+        return 1
     
-    # split data into X and y
-    if predict: #drop random extra indexing col
-        dataset = dataset[:, 1:]
     
     #save feature names out separately from rest of dataset
-    feature_names = dataset[0, start_of_data:] 
-    print(feature_names)
-    dataset = dataset[1:, :]
-
-
-    X = dataset[:, start_of_data:]
-    X[:, -1] = [name.strip("[]") for name in X[:, -1]]
-    Y = dataset[:, name_col:start_of_data] # columns in order: names, sensitivity, memory OR names, delay delta , area delta, sens, mem
-    Y[:, name_col] = [name.strip("[]") for name in Y[:, name_col]]
+    # feature_names = dataset[0, start_of_data:] 
+    # print(feature_names)
+    # dataset = dataset[1:, :]
+    if not predict:
+        dataset_metadata = label_data
+        dataset_metadata.drop('sensitive', axis=1)
 
     seed = 7
     # split data into train and test sets
     if predict:
         #keep all the data when we parse a sample
-        X_train = X
-        y_train = Y
-        X_test = X
-        y_test = Y #the test ones don't matter 
+        X_train = feature_data
+        y_train = label_data
+        X_test = feature_data
+        y_test = label_data #the test ones don't matter 
     else:
         test_size = 0.3
-        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=seed)
+        X_train, X_test, y_train, y_test = train_test_split(feature_data, label_data, test_size=test_size, random_state=seed)
 
-    #print(X_train)
-    #print(y_train)
-
-    #to keep labels with data, pull off only after splitting
-    names_train = y_train[:, name_col]
-    # sens_train = y_train[:, sens_col]
-    # mem_train = y_train[:, mem_col]
-    names_test = y_test[:, name_col]
-    # sens_test = y_test[:, sens_col]
-    # mem_test = y_test[:, mem_col]
-
-    #clean up data now (y's should be 1D)
-    X_train = X_train[:, start_of_data:].astype(np.float64)
-    X_test = X_test[:, start_of_data:].astype(np.float64)
-    if not(predict):
-        y_train = y_train[:, sens_col].astype(np.float64) #label = sensitivity so column 1
-        y_test = y_test[:, sens_col].astype(np.float64)
-
+    if not (predict):
+        # Filter out columns in labels not related to sensitivity. Store those in a separate dataframe
+        name_test = y_test
+        name_train = y_train
+        name_test.drop('sensitive',axis=1)
+        name_train.drop('sensitive',axis=1)
+        y_test = y_test['sensitive']
+        y_train = y_train['sensitive']
+    else:
+        name_test = y_test
+        name_train = y_train
+    
     #save everything for quicker access
-    np.savez(clean_file_name, X_train = X_train, X_test=X_test, y_train=y_train, y_test=y_test, 
-             names_train= names_train, names_test = names_test,
-             feature_names = feature_names)
-
+    return X_train, X_test, y_train, y_test, name_train, name_test, feature_names
 
 
 # -----------------------------------------------------------------------------------------------------------------
 # main
-#load_feature_csv_into_npz('/home/qualcomm_clinic/RTL_dataset/temp_top350.csv', clean_file_name="clean_data")
-npz = np.load("clean_data.npz")
-X_train = npz["X_train"]
-X_test = npz["X_test"]
-y_train = npz["y_train"]
-y_test = npz["y_test"]
-names_train = npz["names_train"]
-names_test = npz["names_test"]
-feature_names = npz["feature_names"] #these feature names are from the training data
+X_train_pd, X_test_pd, y_train_pd, y_test_pd, name_train, name_test, feature_names = \
+    load_dataset_csv('/home/nlucio/feature-extractor/processed_data/temp_top500_LEnorm.csv',drop_mem=True)
+
+plot_folder = "pretty_pictures/"
+
+# Cast X and Y vectors to numpy arrays.
 
 # make model and do cross validation
 # this model uses the sklearn estimator interface *note that this is different from the native interface!!*
@@ -114,12 +98,18 @@ print(clf.get_params()) """
 print("early stop model ----------------------------------------")
 earlystopmodel = xgb.XGBClassifier(tree_method="hist", early_stopping_rounds=10)
 
+# Cast X and Y to numpy arrays.
+
+X_test = X_test_pd.to_numpy()
+X_train = X_train_pd.to_numpy()
+y_test = y_test_pd.to_numpy()
+y_train = y_train_pd.to_numpy()
+
 # reuniting names and features
 earlystopmodel.feature_types = None
 earlystopmodel.feature_names = list(feature_names)
-#print(earlystopmodel.feature_names)
 
-#train model and evaluate
+# train model and evaluate
 earlystopmodel.fit(X_train, y_train, eval_set=[(X_test, y_test)])
 y_pred = earlystopmodel.predict(X_test)
 predictions = [round(value) for value in y_pred]
@@ -145,26 +135,22 @@ print(clf.best_score_)
 print(clf.best_params_)  """
 
 #if we have a single unknown sample and a trained model, can get the prediction via the following:
-load_feature_csv_into_npz("/home/nlucio/feature-extractor/processed_data/openMSP430_features.csv", clean_file_name="openMSP430.npz", predict = True)
-npz = np.load("openMSP430.npz")
-Xnew = npz["X_train"]
-namesnew = npz["names_train"]
+X_new_pd, X_2new_pd, Y_new_pd, Y_new2_pd, name_new_pd, name_new2_pd, features_new = \
+    load_dataset_csv("/home/nlucio/feature-extractor/processed_data/openMSP430_real.csv", clean_file_name="openMSP430.npz", predict = True)
+
+Xnew = X_new_pd.to_numpy()
+namesnew = name_new_pd.to_numpy()
+
 ynew = earlystopmodel.predict(Xnew)
 for i in range(len(Xnew)):
     print("module: %s, X=%s, Predicted=%s" % (namesnew[i],Xnew[i], ynew[i]))
 
-#plots of tree
-#a = xgb.plot_tree(earlystopmodel, num_trees = 1)
-#plt.savefig("xgboost_early_stop_tree.png", dpi = 600)
-
-# Visualize feature importance
-#b = xgb.plot_importance(earlystopmodel, max_num_features=20)
-# create dict to use later
-myfeatures = list(feature_names)
-dict_features = dict(enumerate(myfeatures))
+# plots of tree
+a = xgb.plot_tree(earlystopmodel, num_trees = 1)
+plt.savefig(plot_folder+"xgboost_early_stop_tree.png", dpi = 600)
 
 # feat importance with names f1,f2,...
-axsub = xgb.plot_importance(earlystopmodel, max_num_features=10)
+axsub = xgb.plot_importance(earlystopmodel, max_num_features=15)
 
 # get the original names back
 Text_yticklabels = list(axsub.get_yticklabels())
@@ -173,8 +159,8 @@ lst_yticklabels = [ Text_yticklabels[i].get_text().lstrip('f') for i in range(le
 lst_yticklabels = [ dict_features[int(i)] for i in lst_yticklabels]
 
 axsub.set_yticklabels(lst_yticklabels)
-print(dict_features)
-plt.savefig("xgboost_importance_early_stop.png",  dpi = 600)
+plt.tight_layout()
+plt.savefig(plot_folder+"xgboost_importance_early_stop.png",  dpi = 600)
 
 
 
