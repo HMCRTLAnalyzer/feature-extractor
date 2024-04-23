@@ -140,14 +140,14 @@ def load_dataset(df, predict=False, drop_mem=False):
     #save everything for quicker access
     return X_train, X_test, y_train, y_test, name_train, name_test, feature_names
 
-def predict_model(input_csv, model):
+def predict_model(input_df, model):
     """
-        Takes in a model and an input csv
+        Takes in a model and an input dataframe
 
         outputs a set of predictions according to xgboost based on the input csv
     """
     X_train_pd, X_test_pd, y_train_pd, y_test_pd, name_train, name_test, feature_names = \
-        load_dataset_csv(input_csv, predict=True)
+        load_dataset(input_df, predict=True)
     X = X_train_pd.to_numpy()
 
     prediction = model.predict(X)

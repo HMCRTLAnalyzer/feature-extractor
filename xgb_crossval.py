@@ -65,7 +65,8 @@ print("test score: " + str(test_score))
 clf.save_model(model_folder+"xgb_model_"+dt+".model")
 
 #if we have a single unknown sample and a trained model, can get the prediction via the following:
-ynew, names = predict_model("/home/nlucio/feature-extractor/processed_data/openMSP430_real.csv", clf)
+model_input = pd.read_csv("/home/nlucio/feature-extractor/processed_data/openMSP430_real.csv")
+ynew, names = predict_model(model_input, clf)
 for i in range(len(ynew)):
     print("module: %s, Predicted=%s" % (names[i], ynew[i]))
 
