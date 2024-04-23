@@ -277,24 +277,26 @@ def extractFeatures(input_csv, N):
     df_list = []
 
     for row in df.itertuples(index=False):
-        module = row[0]
-        path_to_rtl = row[1]
-        language = row[2]
-        dot_filepath = generateDOT(path_to_rtl, module, language)
-        print(f"Generating pickle for {module}")
-        graph_dict = cutAIGERtoDAGs(dot_filepath, IO_basenames, output_basenames)
-        idx = 0
-        for key, entry in graph_dict.items():
-            graph = entry["graph"]
-            replaceEdgesWithNotNodes(graph)
-            replaceBufWithLatch(graph)
-            logicalEffortEdgeMap(graph)
+        try:
+            module = row[0]
+            path_to_rtl = row[1]
+            language = row[2]
+            dot_filepath = generateDOT(path_to_rtl, module, language)
+            graph_dict = cutAIGERtoDAGs(dot_filepath, IO_basenames, output_basenames)
+            idx = 0
+            for key, entry in graph_dict.items():
+                graph = entry["graph"]
+                replaceEdgesWithNotNodes(graph)
+                replaceBufWithLatch(graph)
+                logicalEffortEdgeMap(graph)
 
-        LE, LE_norm, LD = topNLargestLEandLD(graph_dict,N)
-        LNC = topNCLBNodeCount(graph_dict,N)
-        FN = topNFanouts(graph_dict,N)
-        data_line = [module]+LD+LE+LE_norm+LNC+FN
-        df_list += [dict(zip(stats_col,data_line))]
+            LE, LE_norm, LD = topNLargestLEandLD(graph_dict,N)
+            LNC = topNCLBNodeCount(graph_dict,N)
+            FN = topNFanouts(graph_dict,N)
+            data_line = [module]+LD+LE+LE_norm+LNC+FN
+            df_list += [dict(zip(stats_col,data_line))]
+        except Exception as e:
+            print(f"Failed to synthesize with error {e}")
 
     # After getting all df items, create dataframe and save it to a csv.
     stats_df = pd.DataFrame(data=df_list)

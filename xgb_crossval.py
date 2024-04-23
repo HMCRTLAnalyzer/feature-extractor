@@ -61,7 +61,6 @@ print("test score: " + str(test_score))
 #train score: 0.9730769230769231 test score: 0.874439461883408
 
 # Save model into models folder
-
 clf.save_model(model_folder+"xgb_model_"+dt+".model")
 
 #if we have a single unknown sample and a trained model, can get the prediction via the following:

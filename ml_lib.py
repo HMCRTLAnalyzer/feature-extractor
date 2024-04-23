@@ -149,6 +149,7 @@ def predict_model(input_df, model):
     X_train_pd, X_test_pd, y_train_pd, y_test_pd, name_train, name_test, feature_names = \
         load_dataset(input_df, predict=True)
     X = X_train_pd.to_numpy()
+    print(X)
 
     prediction = model.predict(X)
 
