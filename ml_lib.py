@@ -23,11 +23,73 @@ def load_dataset_csv(file = 'test4_15.csv', predict=False, drop_mem=False):
 
     df = pd.read_csv(file)
 
+    # Remove entries marked as memory
     if (drop_mem) and (not predict):
         df = df[df.memory == 0]
 
     # read and separate dataframe according to known dataset info column names
 
+    dataset_info_names = ['module', 'delay_delta', 'area_delta', 'memory', 'sensitive'] # Hard coded, maybe turn this into a variable
+
+    try: # Try block for full dataset
+        name_list = list(df.columns.values)
+        # separate dataframe based on whether a column's name is in the list of known dataset info column names
+        dataset_names_list = [x for x in name_list if x in dataset_info_names]
+        feature_names_list = [x for x in name_list if x not in dataset_info_names] 
+        label_data = df[dataset_names_list]
+        feature_data = df[feature_names_list]
+        feature_names = list(feature_data.columns.values) # Cast feature names as numpy array
+    except Exception as e:
+        print(f"Error: Failed to read in Dataframe due to {e}, exiting!")
+        return 1
+    
+    
+    #save feature names out separately from rest of dataset
+    # feature_names = dataset[0, start_of_data:] 
+    # print(feature_names)
+    # dataset = dataset[1:, :]
+    if not predict:
+        dataset_metadata = label_data
+        dataset_metadata.drop('sensitive', axis=1)
+
+    seed = 7
+    # split data into train and test sets
+    if predict:
+        #keep all the data when we parse a sample
+        X_train = feature_data
+        y_train = label_data
+        X_test = feature_data
+        y_test = label_data #the test ones don't matter 
+    else:
+        test_size = 0.3
+        X_train, X_test, y_train, y_test = train_test_split(feature_data, label_data, test_size=test_size, random_state=seed)
+
+    if not (predict):
+        # Filter out columns in labels not related to sensitivity. Store those in a separate dataframe
+        name_test = y_test
+        name_train = y_train
+        name_test.drop('sensitive',axis=1)
+        name_train.drop('sensitive',axis=1)
+        y_test = y_test['sensitive']
+        y_train = y_train['sensitive']
+    else:
+        name_test = y_test
+        name_train = y_train
+    
+    #save everything for quicker access
+    return X_train, X_test, y_train, y_test, name_train, name_test, feature_names
+
+def load_dataset(df, predict=False, drop_mem=False):
+    """
+        Loads a dataset from a pandas dataframe. Essentially a copy of load_dataset_csv.
+
+        Automatically splits the dataframe
+    """
+    # Remove entries marked as memory
+    if (drop_mem) and (not predict):
+        df = df[df.memory == 0]
+
+    # read and separate dataframe according to known dataset info column names
     dataset_info_names = ['module', 'delay_delta', 'area_delta', 'memory', 'sensitive'] # Hard coded, maybe turn this into a variable
 
     try: # Try block for full dataset
