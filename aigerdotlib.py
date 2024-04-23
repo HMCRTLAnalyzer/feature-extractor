@@ -12,6 +12,7 @@ import os
 from datetime import datetime
 import time
 import logging
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -254,6 +255,51 @@ def cutAIGERtoDAGs(filepath, IO_basenames, output_basenames):
     return graph_dict
 
 
+def extractFeatures(input_csv, N):
+    """
+        Takes in a CSV containing a bunch of modules to be analyzed, and the top N values to take.
+
+        Outputs a pandas dataframe containing the information for use in XGBoost.
+    """
+    df = pd.read_csv(input_csv)
+    df = df.loc[:,["module","path_to_rtl","language"]]
+
+    nlist = list(range(N))
+    nlist.sort(reverse=True)
+    ld_cols = [f"LD{x}" for x in nlist]
+    le_cols = [f"LE{x}" for x in nlist]
+    nodecnt_cols = [f"NCNT{x}" for x in nlist]
+    fanout_cols = [f"FO{x}" for x in nlist]
+    lenorm_cols = [f"LEnorm{x}" for x in nlist]
+    IO_basenames = ["I","O","L"]
+    output_basenames = ["O","L"]
+    stats_col = ["module"]+ld_cols+le_cols+lenorm_cols+nodecnt_cols+fanout_cols
+    df_list = []
+
+    for row in df.itertuples(index=False):
+        module = row[0]
+        path_to_rtl = row[1]
+        language = row[2]
+        dot_filepath = generateDOT(path_to_rtl, module, language)
+        print(f"Generating pickle for {module}")
+        graph_dict = cutAIGERtoDAGs(dot_filepath, IO_basenames, output_basenames)
+        idx = 0
+        for key, entry in graph_dict.items():
+            graph = entry["graph"]
+            replaceEdgesWithNotNodes(graph)
+            replaceBufWithLatch(graph)
+            logicalEffortEdgeMap(graph)
+
+        LE, LE_norm, LD = topNLargestLEandLD(graph_dict,N)
+        LNC = topNCLBNodeCount(graph_dict,N)
+        FN = topNFanouts(graph_dict,N)
+        data_line = [module]+LD+LE+LE_norm+LNC+FN
+        df_list += [dict(zip(stats_col,data_line))]
+
+    # After getting all df items, create dataframe and save it to a csv.
+    stats_df = pd.DataFrame(data=df_list)
+    return stats_df
+
 def generateDOT(srcdir, module, language):
     """
         Takes in a source directory, a (system)verilog module name, and a language. Returns the filepath of a .dot file generated using AIGER as an intermediate
@@ -278,6 +324,7 @@ def generateDOT(srcdir, module, language):
     logger.info(f"DOT file for {module} generated at {dot_filepath}")
 
     return dot_filepath
+
 
 def getNodesOnPath(graph, output_list):
     """
@@ -326,8 +373,6 @@ def getNodesOnPath(graph, output_list):
             "Graph contains a cycle or graph changed during iteration"
         )
     return node_dict
-
-
 
 
 def getLogicalDepthAllPaths(graph, input_names, output_names):
