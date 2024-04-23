@@ -9,6 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from sklearn import metrics
+import time
 
 # ----------------------------------------
 # to do: try training on only non-memories! -diego's suggestion
@@ -84,6 +85,8 @@ X_train_pd, X_test_pd, y_train_pd, y_test_pd, name_train, name_test, feature_nam
     load_dataset_csv('/home/nlucio/feature-extractor/processed_data/temp_top500_LEnorm.csv',drop_mem=True)
 
 plot_folder = "pretty_pictures/"
+model_folder = "models/"
+dt = time.strftime("%Y-%d_%H%M")
 
 # Cast X and Y vectors to numpy arrays.
 
@@ -136,7 +139,7 @@ print(clf.best_params_)  """
 
 #if we have a single unknown sample and a trained model, can get the prediction via the following:
 X_new_pd, X_2new_pd, Y_new_pd, Y_new2_pd, name_new_pd, name_new2_pd, features_new = \
-    load_dataset_csv("/home/nlucio/feature-extractor/processed_data/openMSP430_real.csv", clean_file_name="openMSP430.npz", predict = True)
+    load_dataset_csv("/home/nlucio/feature-extractor/processed_data/openMSP430_real.csv", predict = True)
 
 Xnew = X_new_pd.to_numpy()
 namesnew = name_new_pd.to_numpy()
@@ -147,21 +150,25 @@ for i in range(len(Xnew)):
 
 # plots of tree
 a = xgb.plot_tree(earlystopmodel, num_trees = 1)
-plt.savefig(plot_folder+"xgboost_early_stop_tree.png", dpi = 600)
+plt.savefig(plot_folder+"xgboost_early_stop_tree_"+dt+".png", dpi = 600)
 
 # feat importance with names f1,f2,...
 axsub = xgb.plot_importance(earlystopmodel, max_num_features=15)
 
 # get the original names back
 Text_yticklabels = list(axsub.get_yticklabels())
+myfeatures = list(feature_names)
 dict_features = dict(enumerate(myfeatures))
 lst_yticklabels = [ Text_yticklabels[i].get_text().lstrip('f') for i in range(len(Text_yticklabels))]
 lst_yticklabels = [ dict_features[int(i)] for i in lst_yticklabels]
 
 axsub.set_yticklabels(lst_yticklabels)
 plt.tight_layout()
-plt.savefig(plot_folder+"xgboost_importance_early_stop.png",  dpi = 600)
+plt.savefig(plot_folder+"xgboost_importance_early_stop_"+dt+".png",  dpi = 600)
 
+# Save model into models folder
+
+earlystopmodel.save_model(model_folder+"xgb_model_"+dt+".model")
 
 
 # https://machinelearningmastery.com/make-predictions-scikit-learn/
